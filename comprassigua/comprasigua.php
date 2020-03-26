@@ -407,7 +407,7 @@ foreach($registros1 as $montoprueba):
             <td class="text-center"><?php echo $montoprueba->estado?></td>
             <td class="text-center"><?php echo $prueba;?></td>
             
-            <td class="bot text-center"><a href="inactivar_usuario.php?Id=<?php echo $montoprueba->Id?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
+            <td class="bot text-center"><a href="eliminarordendecompra.php?Id=<?php echo $montoprueba->codigo_pedido?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
             <a type="button"  id="btnEditar"  style="margin: 5px;" class="btn btn-warning btnEditar" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
           </tr>
           
