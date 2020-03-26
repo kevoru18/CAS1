@@ -539,51 +539,11 @@ foreach($registros1 as $montoprueba):
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modificar Usuario?</h5>
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
         </div>
-      <form id="mModificar">
-        <div class="modal-body">Detalle de Orden de compra.
-        <div class="modal-body">
-        <table class="table table-sm">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Descripción</th>
-      <th scope="col">Cantidad</th>
-      <th scope="col">Precio Unitario</th>
-      <th scope="col">Monto</th>
-      <th scope="col">Operación</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-  
-
-    <?php
-    foreach($registros as $factura_pendiente2 ):
-      $factura_pendiente3= $factura_pendiente2->codigo_pedido;
-      $pendientes=$base->query("SELECT DISTINCT * FROM  temp WHERE estado='Pendiente' AND codigo_pedido= $factura_pendiente3 ORDER BY $factura_pendiente3 ")->fetchAll(PDO::FETCH_OBJ);
-      foreach($pendientes as $posibles):
-      
-    
-    ?>
-      <th scope="row"><?php echo $posibles-> codigo_pedido?></th>
-      <td><?php echo $posibles->descripcion_producto?></td>
-      <td><?php echo $posibles->cantidad?></td>
-      <td><?php echo $posibles->costoU?></td>
-      <td><?php echo $posibles->costo_total?></td>
-      
-    <tr>
-    <?php endforeach;endforeach;?>
-    </tr>
-    </tr>
-    <tr>
-    </tr>
-  </tbody>
-</table>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <input class="btn btn-warning" type="submit" href="#" value="Actualizar"></input>

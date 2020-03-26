@@ -1,7 +1,10 @@
 # CAS1
-COMIXMUL
-Es un Sistema desarrollado por Kevin Rubí
-www.twitter.com/kevo_ruxo
-@kevo_ruxo
-Primera prueba del PUSH
-Segunda prueba del PUSH
+# COMIXMUL
+# Desarrollado por
+# Ing. Kevin Rubí
+# Software Developer
+# https://www.facebook.com/kevoru
+# https://www.twitter.com/kevo_ruxo
+# kevoru@gmail.com    
+# kevoru@protonmail.com
+# RDG DESIGN

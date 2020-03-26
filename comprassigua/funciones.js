@@ -57,25 +57,13 @@ var fila; //captura la fila para editar.
 
 $(document).on("click",".btnEditar",function(){
     fila=$(this).closest("tr");
-    $(".modal-title").text("Orden de compra"  );
+
+    id=fila.find('td:eq(0)').text();
+    $(".modal-title").text("Orden de compra" + " #"+id);
     $(".modal-header").css("background-color","#4e6c2a");
     $(".modal-header").css("color","white");
     $("#modalmodificar").modal("show");
-    id=fila.find('td:eq(0)').text();
-    name=fila.find('td:eq(1)').text();
-    phone=fila.find('td:eq(2)').text();
-    position=fila.find('td:eq(3)').text();
-    office=fila.find('td:eq(4)').text();
-    permits=fila.find('td:eq(5)').text();
-    status=fila.find('td:eq(6)').text();
     $("#iduseru").val(id);
-    $("#nameu").val(name);
-    $("#phoneu").val(phone);
-    $("#positionu").val(position);
-    $("#officeu").val(office);
-    $("#permitsu").val(permits);
-    $("#statusu").val(status);
-    
     
 })
 
@@ -89,20 +77,12 @@ $(document).on("click",".btnEditar",function(){
     $("#mModificar").submit(function(e){
     e.preventDefault();
     ide = $.trim($("#iduseru").val());
-    nombre = $.trim($("#nameu").val());
-    phone = $.trim($("#phoneu").val()   );
-    position = $.trim($("#positionu").val());
-    office = $.trim($("#officeu").val());
-    permits = $.trim($("#permitsu").val());
-    status = $.trim($("#statusu").val());
-   
     
     $.ajax({
         type:"POST",
-        url:"modiproveedor.php",
+        url:"modicompra.php",
         datatype:"json",
-        data:{ide:ide, nombre:nombre,phone:phone,position:position,office:office, 
-            permits:permits, status:status},
+        data:{ide:ide},
         success: function(data){
             console.log(data);
             
