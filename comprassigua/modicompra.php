@@ -2,13 +2,14 @@
 include('../Conection/conexion.php');
 
 require("../Conection/config.php");
-echo "Estas a punto de modificar un archivo";
+
+echo "Estas a punto de modificar un archivo" ;
+
 /*Recepción de información*/
 $ide = (isset($_POST['ide'])) ? $_POST['ide'] : "";
 
-echo '<form id="mModificar">
-<div class="modal-body">Detalle de Orden de compra.
-<div class="modal-body">
+
+echo '
 <table class="table table-sm">
 <thead>
 <tr>

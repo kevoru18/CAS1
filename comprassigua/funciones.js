@@ -64,6 +64,20 @@ $(document).on("click",".btnEditar",function(){
     $(".modal-header").css("color","white");
     $("#modalmodificar").modal("show");
     $("#iduseru").val(id);
+    ide = id;
+    $.ajax({
+      type:"POST",
+      url:"modicompra.php",
+      datatype:"json",
+      data:{ide:ide},
+      success: function(data){
+          console.log(data);
+          
+          
+      }
+    
+  });
+ 
     
 })
 
@@ -78,19 +92,6 @@ $(document).on("click",".btnEditar",function(){
     e.preventDefault();
     ide = $.trim($("#iduseru").val());
     
-    $.ajax({
-        type:"POST",
-        url:"modicompra.php",
-        datatype:"json",
-        data:{ide:ide},
-        success: function(data){
-            console.log(data);
-            
-            
-        }
-      
-    });
-   
 
     $('#modalmodificar').modal('hide');
 

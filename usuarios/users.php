@@ -514,7 +514,7 @@ function desencriptar($texto){
       <form id="mModificar">
         <div class="modal-body">Selecciona el campo a modificar Acontinuación si está listo para terminar presione guardar.
         <div class="modal-body">
-        <input type="hidden" class="form-control input-sm" id="iduseru" name="iduseru" >
+         <input type="hidden" class="form-control input-sm" id="iduseru" name="iduseru" >
           <label>Nombre</label><input type="text" class="form-control input-sm" id="nameu" name="nameu" >
           <label >Teléfono</label><input type="text" class="form-control input-sm" id="phoneu" name="phoneu">
           <label >Cargo</label><input type="text" class="form-control input-sm" id="positionu" >

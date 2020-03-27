@@ -544,6 +544,12 @@ foreach($registros1 as $montoprueba):
             <span aria-hidden="true">×</span>
           </button>
         </div>
+        <form id="mModificar">
+          <div class="modal-body">Detalle de Orden de compra.
+          <div class="modal-body">
+          </div>
+        </div>
+        
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <input class="btn btn-warning" type="submit" href="#" value="Actualizar"></input>
