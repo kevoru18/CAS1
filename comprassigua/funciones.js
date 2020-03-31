@@ -73,7 +73,12 @@ $(document).on("click",".btnEditar",function(){
       success: function(data){
           console.log(data);
           
-          
+          $(".pruebass").html("");
+          $(".pruebass").append("Detalle de Pedido </span>");
+          $(".pruebass").html(data);
+      },
+      error: function(jqXHR,estado,error){
+        $(".pruebass").html('Hubo un error: ');
       }
     
   });
@@ -175,4 +180,13 @@ function busca_prod(){
     }else{
     }
    }
-/****************************************************************************/
+/********************Funcion de calcular nuevo monto********************************************************/
+function calcula_monto(){
+  $('#tabla_articulos > tbody > tr').each(function(){
+ var precio = parseInt($(this).find('td').eq(4).html());
+ var cantidad = parseInt($(this).find('#cantidad-prod').val());
+ var result = precio*cantidad;
+ 
+ $(this).find('#monto').val(result);
+ });
+}

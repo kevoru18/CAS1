@@ -545,8 +545,8 @@ foreach($registros1 as $montoprueba):
           </button>
         </div>
         <form id="mModificar">
-          <div class="modal-body">Detalle de Orden de compra.
-          <div class="modal-body">
+          <div class="modal-body pruebass">Detalle de Orden de compra.
+          <div class="modal-body detalle_de_pedido" id='detalle_de_pedido'>
           </div>
         </div>
         
