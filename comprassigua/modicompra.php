@@ -40,7 +40,15 @@ foreach($pendientes as $posibles):
 <td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotal' id='monto' name='product-subtotal' value=<?php echo $posibles->costo_total?> disabled></td>
 
 <tr>
+
 <?php endforeach;endforeach;?>
+<tr id='tr2'>
+<td></td>
+<td></td>
+<td></td>
+<td style='font-size: 15px; font-weight: bold; text-align: center;'>Total</td>
+<td><input type='text' class='form-control pull-center' id='total' disabled></td>
+</tr>
 </tr>
 </tr>
 <tr>

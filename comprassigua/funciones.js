@@ -76,6 +76,7 @@ $(document).on("click",".btnEditar",function(){
           $(".pruebass").html("");
           $(".pruebass").append("Detalle de Pedido </span>");
           $(".pruebass").html(data);
+          calcular_total();
       },
       error: function(jqXHR,estado,error){
         $(".pruebass").html('Hubo un error: ');
@@ -183,10 +184,27 @@ function busca_prod(){
 /********************Funcion de calcular nuevo monto********************************************************/
 function calcula_monto(){
   $('#tabla_articulos > tbody > tr').each(function(){
- var precio = parseInt($(this).find('td').eq(4).html());
+ var precio = parseInt($(this).find('td').eq(2).html());
  var cantidad = parseInt($(this).find('#cantidad-prod').val());
  var result = precio*cantidad;
- 
+ result = result.toFixed();
  $(this).find('#monto').val(result);
+ calcular_total();
+ 
  });
 }
+
+/*******************************************************************************************/
+function calcular_total(){
+  var array = document.getElementsByClassName('product-subtotal');
+  var total = 0;
+  for(var i=0; i<array.length; i++){
+    var value = parseFloat(array[i].value);
+    total += value;
+  }
+  total = total.toFixed();
+  $('#total').val(total);
+    // });
+    // });
+}
+/*******************************************************************************************/

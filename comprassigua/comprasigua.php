@@ -15,6 +15,7 @@ require("../Conection/config.php");
 
 
 $registros=$base->query("select distinct codigo_pedido from  temp where estado='Pendiente' order by Id")->fetchAll(PDO::FETCH_OBJ);
+$PreProcesada=$base->query("select distinct num_factura from  orden_pedido where estado='Pendiente' order by id_compra")->fetchAll(PDO::FETCH_OBJ);
 $exec1=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
 $exec=$base->query("select * from proveedores")->fetchAll(PDO::FETCH_OBJ);
 
@@ -419,6 +420,71 @@ foreach($registros1 as $montoprueba):
 </div>
 
 </div>
+<!-- DataTales Example 2 -->
+<div class="card shadow mb-4">
+  <div class="card-header py-3">
+  
+    <h6 class="m-0 font-weight-bold text-primary">Orden de compra PreProcesada</h6>
+   
+    
+  </div>
+  
+   
+  <div class="card-body">
+    <div class="table-responsive" id="tablausuarios">
+      <table class="table table-bordered" id="tablausuarios" width="100%" cellspacing="0">
+        <thead>
+          <tr> 
+            <th class="text-center"># Pedido</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Monto</th>
+            <th class="text-center">Opciones</th>
+            
+            </tr>
+        </thead>
+        <tfoot>
+          <tr>
+          <th class="text-center"># Pedido</th>
+            <th class="text-center">Estado</th>
+            <th class="text-center">Monto</th>
+            <th class="text-center">Opciones</th>
+            
+          </tr>
+        </tfoot>
+
+
+  <?php
+
+    foreach($PreProcesada as $persona):
+
+$factura_pendiente= $persona->codigo_pedido;
+$registros1=$base->query("SELECT * FROM orden_pedido WHERE num_factura='$factura_pendiente'")->fetchAll(PDO::FETCH_OBJ);  
+$monto1=0;
+foreach($registros1 as $montoprueba):
+  $prueba= $montoprueba-> monto;
+  
+
+
+    ?>
+        <tbody>
+          <tr>
+            <td class="text-center"><?php echo $factura_pendiente;?></td>
+            <td class="text-center"><?php echo $montoprueba->estado?></td>
+            <td class="text-center"><?php echo $montoprueba->total?></td>
+            
+            <td class="bot text-center"><a href="eliminarordendecompra.php?Id=<?php echo $montoprueba->num_factura?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
+            <a type="button"  id="btnEditar"  style="margin: 5px;" class="btn btn-warning btnEditar" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
+          </tr>
+          
+        </tbody>
+    <?php endforeach; endforeach;?>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
 <!-- /.container-fluid -->
 
 </div>
@@ -552,7 +618,7 @@ foreach($registros1 as $montoprueba):
         
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <input class="btn btn-warning" type="submit" href="#" value="Actualizar"></input>
+          <input class="btn btn-warning" type="submit" href="#" value="Procesar"></input>
         </div>
       </form>
 
