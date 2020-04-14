@@ -18,7 +18,7 @@ echo '
 <th scope="col">Cantidad</th>
 <th scope="col">Precio Unitario</th>
 <th scope="col">Monto</th>
-<th scope="col">Operación</th>
+
 </tr>
 </thead>
 <tbody>
@@ -38,6 +38,7 @@ foreach($pendientes as $posibles):
 <td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prod' value=<?php echo $posibles->cantidad?> onkeyup='calcula_monto();' onclick='calcula_monto();'></td>
 <td><?php echo $posibles->costoU?></td>
 <td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotal' id='monto' name='product-subtotal' value=<?php echo $posibles->costo_total?> disabled></td>
+
 
 <tr>
 

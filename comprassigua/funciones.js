@@ -40,19 +40,12 @@ $("#mAgregar").submit(function(e){
         }
       
     });
-   
-
-  
+   })
 
 
 
 
-    })
-
-
-
-
-
+/****************************Modal Editar orden de compra******************************************* */
 var fila; //captura la fila para editar.
 
 $(document).on("click",".btnEditar",function(){
@@ -86,19 +79,10 @@ $(document).on("click",".btnEditar",function(){
  
     
 })
-
-
-
-
-
-
-
-
     $("#mModificar").submit(function(e){
     e.preventDefault();
     ide = $.trim($("#iduseru").val());
     
-
     $('#modalmodificar').modal('hide');
 
     (function(){
@@ -116,9 +100,88 @@ $(document).on("click",".btnEditar",function(){
 
 
 });
+/*************************Final modal editar orden de compra************************************************* */
+/*************************Guardar pedido para imprimir compra***************************************************/
+
+function guarda_pedido(){
+  $("#btn-procesa").prop('disabled', true);
+   var n = noty({
+          text: "Deseas guardar el pedido...?",
+          theme: 'relax',
+          layout: 'center',
+          type: 'information',
+          modal: 'true',
+          buttons     : [
+            {addClass: 'btn btn-primary',
+             text    : 'Si',
+             onClick : function ($noty){
+                  $noty.close();
+                  setTimeout('actualiza_ticket()',1000);
+                  var yapuso=0;
+                  $('#tabla_articulos > tbody > #tr').each(function(){
+                     var descripcion_art=$(this).find('td').eq(1).html();
+                     var cod = $(this).find('td').eq(0).html();
+                     var can = $(this).find('#cantidad-prod').val();
+                     var cu  = $(this).find('td').eq(3).html();
+                     var monto=$(this).find('#monto').val();
+                     $.ajax({
+                     beforeSend: function(){
+                      },
+                     url: 'guarda_pedido.php',
+                     type: 'POST',
+                     data: 'codigo='+cod+'&cantidad='+can+'&costou='+cu+
+                     '&proveedor='+$("#codigo_busqueda").val()+
+                     '&num_fact='+$("#num_pedido").val(),
+                     success: function(x){
+                        if(x=="0"){
+                           var n = noty({
+                           text: "Hubo un error al procesar el articulo: "+cod+'. Consulte a soporte inmediatamente...!',
+                           theme: 'relax',
+                           layout: 'topLeft',
+                           type: 'success',
+                          })
+                          }else{
+
+                           var n = noty({
+                           text: "Se proceso el articulo: "+cod,
+                           theme: 'relax',
+                           layout: 'topLeft',
+                           type: 'success',
+                           timeout: 4000,
+                          })
+
+                          if(yapuso==0){
+                              llena_ticket_archivo(cod,can,cu,descripcion_art,monto,$("#num_pedido").val(),$("#codigo_busqueda").val(),yapuso,$("#proveedor").val());
+                          yapuso=1;
+                          }else{
+                              llena_ticket_archivo(cod,can,cu,descripcion_art,monto,$("#num_pedido").val(),$("#codigo_busqueda").val(),yapuso,$("#proveedor").val());
+                          }
+
+                          }
+                      },
+                     error: function(jqXHR,estado,error){
+                      }
+                     });
+                   });
+                  }
+
+           },
+           {addClass: 'btn btn-danger',
+            text    : 'No',
+            onClick : function ($noty){
+               $("#btn-procesa").prop('disabled', false);
+               $noty.close();
+            }
+            }
+              
+
+          ]
+      });
+ }
 
 
-/****************************************************************************/
+/*************************Final guardar orden de compra************************************************* */
+/****************Busca Proveedores************************************************************/
 function busca_prov(){
     if($("#proveedorcod").val()!=""){
    $(document).ready(function(){
