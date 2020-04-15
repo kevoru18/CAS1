@@ -12,6 +12,13 @@ $registros=$base->query("SELECT DISTINCT codigo_pedido FROM  temp WHERE estado='
 echo '
 <table id="tabla_articulos" class="table table-sm">
 <thead>
+<div class="form-group lable-floating">
+<label for="tipo_buscar" class="control-label">Fecha de la Factura:</label>
+<input type="text" style="min-width: 100px;" class="form-control pull-center product-subtotal" id="monto" name="product-subtotal" value="" disabled>
+<label for="tipo_buscar" class="control-label">Proveedor:</label>
+<input type="text" style="min-width: 100px;" class="form-control pull-center product-subtotal" id="monto" name="product-subtotal" value="" disabled>
+
+</div>
 <tr>
 <th scope="col">#</th>
 <th scope="col">Descripción</th>

@@ -265,7 +265,7 @@ function calcular_total(){
     var value = parseFloat(array[i].value);
     total += value;
   }
-  total = total.toFixed();
+  total = total.toString();
   $('#total').val(total);
     // });
     // });
