@@ -616,9 +616,9 @@ foreach($registros1 as $montoprueba):
           </div>
         </div>
         
-        <div class="modal-footer">
+        <div class="modal-footer" id="footer-modificar">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <input class="btn btn-warning" type="button" href="#" onclick="guarda_pedido();" id='btn-procesa' value="Procesar"></input>
+          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa' value="Procesar"></input>
         </div>
       </form>
 

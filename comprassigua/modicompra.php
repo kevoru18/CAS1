@@ -11,9 +11,10 @@ $registros=$base->query("SELECT DISTINCT codigo_pedido FROM  temp WHERE estado='
 foreach($registros as $fechaproveedor ):
     $fechaproveedor1= $fechaproveedor->codigo_pedido;
     $fechapendientes=$base->query("SELECT DISTINCT * FROM  temp WHERE estado='Pendiente' AND codigo_pedido= $fechaproveedor1 ORDER BY $fechaproveedor1 ")->fetchAll(PDO::FETCH_OBJ);
-    foreach($fechapendientes as $fechaproveedor1 ):
+    $fechapendientes1=$base->query("SELECT DISTINCT fecha_creacion_factura FROM  temp WHERE estado='Pendiente' AND codigo_pedido= $fechaproveedor1 ")->fetchAll(PDO::FETCH_OBJ);
+    foreach($fechapendientes1 as $fechaproveedor1 ):
     $fecha= $fechaproveedor1->fecha_creacion_factura;
-    $proveedor1= $fechaproveedor1->nombre_proveedor;
+    
     
 echo '
 <table id="tabla_articulos" class="table table-sm">
@@ -23,12 +24,17 @@ echo '
 <div class="form-group lable-floating">
 <label for="tipo_buscar" class="control-label">Fecha de la Factura:</label>
 <input type="text" style="min-width: 100px;" class="form-control pull-center " id="fecha_pendiente" name="fecha_pendiente" value="'. $fecha .'" disabled>
+';endforeach;
+foreach($fechapendientes as $fechaproveedor2 ):
+    $proveedor1= $fechaproveedor2->nombre_proveedor; echo '
+    
 <label for="tipo_buscar" class="control-label">Proveedor:</label>
-<input type="text" style="min-width: 100px;" class="form-control pull-center " id="proveedor_pendiente" name="proveedor_pendiente" value="'.$proveedor1.'" disabled>
+<input type="text" style="min-width: 100px;" class="form-control pull-center " id="proveedor_pendiente" name="proveedor_pendiente" value="'.$proveedor1 .'" disabled>
 
 </div>
-</form>
-<tr>
+</form>';
+endforeach;endforeach;
+echo '<tr>
 <th scope="col">#</th>
 <th scope="col">Descripción</th>
 <th scope="col">Cantidad</th>
@@ -41,7 +47,7 @@ echo '
 <tr>';
 
 
-endforeach;endforeach;
+
 foreach($registros as $factura_pendiente2 ):
 $factura_pendiente3= $factura_pendiente2->codigo_pedido;
 $pendientes=$base->query("SELECT DISTINCT * FROM  temp WHERE estado='Pendiente' AND codigo_pedido= $factura_pendiente3 ORDER BY $factura_pendiente3 ")->fetchAll(PDO::FETCH_OBJ);
