@@ -645,6 +645,34 @@ foreach($registros1 as $montoprueba):
     </div>
   </div>
 
+<!--Opciones de imprimir-->
+<div class="modal" id="ModalImprimir"  role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form id="mImprimir">
+          
+        
+        <div class="modal-footer" id="footer-modificar">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa' value="Si"></input>
+        </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
 
   <script>
   function cerrarmodal(){

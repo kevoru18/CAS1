@@ -79,36 +79,33 @@ $(document).on("click",".btnEditar",function(){
  
     
 })
-    $("#mModificar").submit(function(e){
-    e.preventDefault();
-    ide = $.trim($("#iduseru").val());
-    $("#btn-procesa").prop('disabled', true);  
-    $('#modalmodificar').modal('true');
-
-    (function(){
-      setInterval(function() {
-             document.location.reload()
-         }, 
-             200)
-     })()
-
+    
+/*************************Final modal editar orden de compra************************************************* */
+/*************************Guardar pedido para imprimir compra***************************************************/
+$("#mModificar").submit(function(e){
+  e.preventDefault();
+  
+  $("#btn-procesa").prop('disabled', true);
+  $(".modal-title").text("Deseas guardar el pedido...?");
+  $(".modal-header").css("background-color","#4e6c2a");
+  $(".modal-header").css("color","white");
+  $("#ModalImprimir").modal("show");
 
 
 
 
-    })
+
+
+
+
+
+
+
+
+})
 
 
 });
-/*************************Final modal editar orden de compra************************************************* */
-/*************************Guardar pedido para imprimir compra***************************************************/
-
-$("mModificar").submit(function(e){
-  e.preventDefault();
-
-  
-  
-} )
 /*************************Final guardar orden de compra************************************************* */
 /****************Busca Proveedores************************************************************/
 function busca_prov(){
