@@ -650,7 +650,7 @@ foreach($registros1 as $montoprueba):
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <h5 class="modal-title-imprimir" id="exampleModalLabel"></h5>
           <button class="close" type="button" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">×</span>
           </button>
@@ -659,8 +659,8 @@ foreach($registros1 as $montoprueba):
           
         
         <div class="modal-footer" id="footer-modificar">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa' value="Si"></input>
+          <button class="btn btn-secondary" type="button" id="cancel-no" data-dismiss="modal">No</button>
+          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa-si' value="Si"></input>
         </div>
       </form>
 

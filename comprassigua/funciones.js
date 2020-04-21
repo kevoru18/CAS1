@@ -84,23 +84,35 @@ $(document).on("click",".btnEditar",function(){
 /*************************Guardar pedido para imprimir compra***************************************************/
 $("#mModificar").submit(function(e){
   e.preventDefault();
-  
-  $("#btn-procesa").prop('disabled', true);
-  $(".modal-title").text("Deseas guardar el pedido...?");
+  id=fila.find('td:eq(0)').text();
+  ide2=id;
+  $("#ModalImprimir").modal("show");
+  $(".modal-title-imprimir").text("Deseas imprimir la orden de compra #"+id+ "...?");
   $(".modal-header").css("background-color","#4e6c2a");
   $(".modal-header").css("color","white");
-  $("#ModalImprimir").modal("show");
+  $("·ModalImprimir").submit(function(e){
+    e.preventDefault();
+    $.ajax({
+      type:"POST",
+      url:"pasotemp-orden.php",
+      datatype:"json",
+      data:{ide:ide},
+      success: function(data){
+          console.log(data);
+          
+          $(".pruebass").html("");
+          $(".pruebass").append("Detalle de Pedido </span>");
+          $(".pruebass").html(data);
+          calcular_total();
+      },
+      error: function(jqXHR,estado,error){
+        $(".pruebass").html('Hubo un error: ');
+      }
+    
+  });
+    
 
-
-
-
-
-
-
-
-
-
-
+  })
 
 })
 
@@ -218,10 +230,53 @@ function calcula_monto(){
  var result = precio*cantidad;
  result = result.toFixed();
  $(this).find('#monto').val(result);
+ actualiza_pedido();
  calcular_total();
+
  
  });
 }
+
+/*******************************************************************************************/
+function actualiza_pedido(){
+                  $('#tabla_articulos > tbody > #tr').each(function(){
+                    var descripcion_art=$(this).find('td').eq(1).html();
+                     var cod = $(this).find('td').eq(0).html();
+                     var can = $(this).find('#cantidad-prod').val();
+                     var cu  = $(this).find('td').eq(3).html();
+                     var monto=$(this).find('#monto').val();
+                     $.ajax({
+                     beforeSend: function(){
+                      },
+                     url: 'actualiza_pedido.php',
+                     type: 'POST',
+                     data: 'codigo='+cod+'&cantidad='+can+'&costou='+cu+
+                     '&proveedor='+$("#codigo_busqueda").val()+
+                     '&num_fact='+$("#num_pedido").val()+'&monto='+monto,
+                     success: function(x){
+                        if(x=="0"){
+                           var n = noty({
+                           text: "Hubo un error al procesar el articulo: "+cod+'. Consulte a soporte inmediatamente...!',
+                           theme: 'relax',
+                           layout: 'topLeft',
+                           type: 'success',
+                          })
+                          }else{
+   
+                          }
+                      },
+                     error: function(jqXHR,estado,error){
+                      }
+                     });
+                   });
+                
+
+              
+ }
+
+
+
+
 
 /*******************************************************************************************/
 function calcular_total(){
