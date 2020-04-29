@@ -658,7 +658,14 @@ foreach($registros1 as $montoprueba):
         <form id="mImprimir">
           
         
-        <div class="modal-footer" id="footer-modificar">
+        <div class="modal-footer" id="footer-imprimir">
+        <input type="text" id="fact" class="factu">
+        <input type="text" id="codigo_pedido" class="codigo_pedido">
+        <input type="text" id="cantidad_pedido" class="cantidad_pedido">
+        <input type="text" id="monto_pedido" class="monto_pedido">
+        
+        
+
           <button class="btn btn-secondary" type="button" id="cancel-no" data-dismiss="modal">No</button>
           <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa-si' value="Si"></input>
         </div>

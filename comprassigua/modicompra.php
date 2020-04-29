@@ -11,10 +11,10 @@ $registros=$base->query("SELECT DISTINCT codigo_pedido FROM  temp WHERE estado='
 foreach($registros as $fechaproveedor ):
     $fechaproveedor1= $fechaproveedor->codigo_pedido;
     $fechapendientes=$base->query("SELECT DISTINCT * FROM  temp WHERE estado='Pendiente' AND codigo_pedido= $fechaproveedor1 ORDER BY $fechaproveedor1 ")->fetchAll(PDO::FETCH_OBJ);
-    $fechapendientes1=$base->query("SELECT DISTINCT fecha_creacion_factura FROM  temp WHERE estado='Pendiente' AND codigo_pedido= $fechaproveedor1 ")->fetchAll(PDO::FETCH_OBJ);
+    $fechapendientes1=$base->query("SELECT DISTINCT fecha_creacion_factura, codigo_pedido FROM  temp WHERE estado='Pendiente' AND codigo_pedido= $fechaproveedor1 ")->fetchAll(PDO::FETCH_OBJ);
     foreach($fechapendientes1 as $fechaproveedor1 ):
     $fecha= $fechaproveedor1->fecha_creacion_factura;
-    
+    $codigo_factura=$fechaproveedor1->codigo_pedido;
     
 echo '
 <table id="tabla_articulos" class="table table-sm">
@@ -22,12 +22,14 @@ echo '
 <form class="form-horizontal">
 
 <div class="form-group lable-floating">
+<label for="tipo_buscar" class="control-label">Orden Pendiente #</label>
+<input type="text" style="min-width: 100px;" class="form-control pull-center " id="codigo_factura" name="codigo_factura" value="'. $codigo_factura.'" disabled>
 <label for="tipo_buscar" class="control-label">Fecha de la Factura:</label>
 <input type="text" style="min-width: 100px;" class="form-control pull-center " id="fecha_pendiente" name="fecha_pendiente" value="'. $fecha .'" disabled>
 ';endforeach;
 foreach($fechapendientes as $fechaproveedor2 ):
     $proveedor1= $fechaproveedor2->nombre_proveedor; echo '
-    
+
 <label for="tipo_buscar" class="control-label">Proveedor:</label>
 <input type="text" style="min-width: 100px;" class="form-control pull-center " id="proveedor_pendiente" name="proveedor_pendiente" value="'.$proveedor1 .'" disabled>
 
@@ -55,9 +57,9 @@ foreach($pendientes as $posibles):
 
 
 ?>
-<th scope="row"><?php echo $posibles->codigo_producto?></th>
+<th scope="row" id="codigo-producto"><?php echo $posibles->codigo_producto?></th>
 <td><?php echo $posibles->descripcion_producto?></td>
-<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prod' value=<?php echo $posibles->cantidad?> onkeyup='calcula_monto();' onclick='calcula_monto();'></td>
+<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prod' value=<?php echo $posibles->cantidad?> onkeyup='calcula_monto(); actualiza_pedido();' onclick='actualiza_pedido(); calcula_monto();'></td>
 <td><?php echo $posibles->costoU?></td>
 <td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotal' id='monto' name='product-subtotal' value=<?php echo $posibles->costo_total?> disabled></td>
 

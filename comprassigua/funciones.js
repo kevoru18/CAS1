@@ -52,7 +52,7 @@ $(document).on("click",".btnEditar",function(){
     fila=$(this).closest("tr");
 
     id=fila.find('td:eq(0)').text();
-    $(".modal-title").text("Orden de compra" + " #"+id);
+    $(".modal-title").text("Orden de compra pendiente");
     $(".modal-header").css("background-color","#4e6c2a");
     $(".modal-header").css("color","white");
     $("#modalmodificar").modal("show");
@@ -82,43 +82,59 @@ $(document).on("click",".btnEditar",function(){
     
 /*************************Final modal editar orden de compra************************************************* */
 /*************************Guardar pedido para imprimir compra***************************************************/
+
 $("#mModificar").submit(function(e){
   e.preventDefault();
-  id=fila.find('td:eq(0)').text();
+  id=$.trim($('#codigo_factura').val());
+  codiprod = $("#codigo-producto").text();
+  cantidadproducto = $.trim($('#cantidad-prod').val());
+  monto = $.trim($('#monto').val());
   ide2=id;
   $("#ModalImprimir").modal("show");
   $(".modal-title-imprimir").text("Deseas imprimir la orden de compra #"+id+ "...?");
+  
   $(".modal-header").css("background-color","#4e6c2a");
   $(".modal-header").css("color","white");
-  $("·ModalImprimir").submit(function(e){
-    e.preventDefault();
-    $.ajax({
-      type:"POST",
-      url:"pasotemp-orden.php",
-      datatype:"json",
-      data:{ide:ide},
-      success: function(data){
-          console.log(data);
-          
-          $(".pruebass").html("");
-          $(".pruebass").append("Detalle de Pedido </span>");
-          $(".pruebass").html(data);
-          calcular_total();
-      },
-      error: function(jqXHR,estado,error){
-        $(".pruebass").html('Hubo un error: ');
-      }
-    
-  });
-    
-
-  })
-
+  document.getElementById("fact").value=id;
+  document.getElementById("codigo_pedido").value=codiprod;
+  document.getElementById("monto_pedido").value=monto;
+  document.getElementById("cantidad_pedido").value=cantidadproducto;
+  
 })
 
 
 });
 /*************************Final guardar orden de compra************************************************* */
+/****************Funcion de orden de impresión************************************************************/
+$("ModalImprimir").submit(function(e){
+  e.preventDefault();
+    var cod_fact =$.trim($("#factu").val());
+    var producto = $.trim($("#codigo_pedido").val());
+    var canti = $.trim($('#cantidad_pedido').val());
+    var precio =$.trim($('#monto_pedido').val());
+    $.ajax({
+      url:"actualiza_pedido.php",
+      type: "POST",
+      dataType: "json",
+      data:{
+        cod_fact:cod_fact, canti: canti, precio: precio, producto:producto
+      },
+      success: function(data){
+        console.log(data);
+      }
+
+    });
+
+
+
+
+  });
+
+
+
+
+
+/*************************FinalFuncion de orden de impresión************************************************* */
 /****************Busca Proveedores************************************************************/
 function busca_prov(){
     if($("#proveedorcod").val()!=""){
@@ -230,49 +246,42 @@ function calcula_monto(){
  var result = precio*cantidad;
  result = result.toFixed();
  $(this).find('#monto').val(result);
- actualiza_pedido();
- calcular_total();
 
+ calcular_total();
+ 
  
  });
 }
 
 /*******************************************************************************************/
 function actualiza_pedido(){
-                  $('#tabla_articulos > tbody > #tr').each(function(){
-                    var descripcion_art=$(this).find('td').eq(1).html();
-                     var cod = $(this).find('td').eq(0).html();
-                     var can = $(this).find('#cantidad-prod').val();
-                     var cu  = $(this).find('td').eq(3).html();
-                     var monto=$(this).find('#monto').val();
-                     $.ajax({
-                     beforeSend: function(){
-                      },
-                     url: 'actualiza_pedido.php',
-                     type: 'POST',
-                     data: 'codigo='+cod+'&cantidad='+can+'&costou='+cu+
-                     '&proveedor='+$("#codigo_busqueda").val()+
-                     '&num_fact='+$("#num_pedido").val()+'&monto='+monto,
-                     success: function(x){
-                        if(x=="0"){
-                           var n = noty({
-                           text: "Hubo un error al procesar el articulo: "+cod+'. Consulte a soporte inmediatamente...!',
-                           theme: 'relax',
-                           layout: 'topLeft',
-                           type: 'success',
-                          })
-                          }else{
-   
-                          }
-                      },
-                     error: function(jqXHR,estado,error){
-                      }
-                     });
-                   });
-                
+  $('#tabla_articulos > tbody > #tr').each(function(){
+    var factura = document.getElementById("codigo_factura");
+     var cod = $(this).find('td').eq(0).html();
+     var can = $(this).find('#cantidad-prod').val();
+     var cu  = $(this).find('td').eq(3).html();
+     var monto=$(this).find('#monto').val();
+     $.ajax({
+     beforeSend: function(){},
+     url: 'actualiza_pedido.php',
+     type: 'POST',
+     data: 
+     'codigo=' + cod +
+     '&cantidad=' + can +
+     '&costou=' + cu +
+     '&monto=' + monto +
+     '&factura=' + factura ,
+     success: function(x){
+      console.log(data);
 
-              
- }
+     },
+     
+     });
+   });
+
+
+
+}
 
 
 
@@ -285,6 +294,7 @@ function calcular_total(){
   for(var i=0; i<array.length; i++){
     var value = parseFloat(array[i].value);
     total += value;
+    
   }
   total = total.toString();
   $('#total').val(total);
