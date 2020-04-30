@@ -59,7 +59,7 @@ foreach($pendientes as $posibles):
 ?>
 <th scope="row" id="codigo-producto"><?php echo $posibles->codigo_producto?></th>
 <td><?php echo $posibles->descripcion_producto?></td>
-<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prod' value=<?php echo $posibles->cantidad?> onkeyup='calcula_monto(); actualiza_pedido();' onclick='actualiza_pedido(); calcula_monto();'></td>
+<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prod' value=<?php echo $posibles->cantidad?> onkeyup='calcula_monto();' onclick=' calcula_monto();'></td>
 <td><?php echo $posibles->costoU?></td>
 <td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotal' id='monto' name='product-subtotal' value=<?php echo $posibles->costo_total?> disabled></td>
 

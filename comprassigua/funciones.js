@@ -106,18 +106,19 @@ $("#mModificar").submit(function(e){
 });
 /*************************Final guardar orden de compra************************************************* */
 /****************Funcion de orden de impresión************************************************************/
-$("ModalImprimir").submit(function(e){
+$("#mImprimir").submit(function(e){
   e.preventDefault();
-    var cod_fact =$.trim($("#factu").val());
-    var producto = $.trim($("#codigo_pedido").val());
-    var canti = $.trim($('#cantidad_pedido').val());
-    var precio =$.trim($('#monto_pedido').val());
+    cod_fact = $.trim($("#fact").val());
+    producto = $.trim($("#codigo_pedido").val());
+    canti = $.trim($('#cantidad_pedido').val());
+    precio = $.trim($('#monto_pedido').val());
     $.ajax({
       url:"actualiza_pedido.php",
       type: "POST",
       dataType: "json",
       data:{
-        cod_fact:cod_fact, canti: canti, precio: precio, producto:producto
+        cod_fact: cod_fact, canti: canti, 
+        precio: precio, producto: producto
       },
       success: function(data){
         console.log(data);
@@ -125,7 +126,14 @@ $("ModalImprimir").submit(function(e){
 
     });
 
+    $('#modalImprimir').modal('hide');
 
+    (function(){
+      setInterval(function() {
+             document.location.reload()
+         }, 
+             200)
+     })()
 
 
   });
@@ -254,35 +262,6 @@ function calcula_monto(){
 }
 
 /*******************************************************************************************/
-function actualiza_pedido(){
-  $('#tabla_articulos > tbody > #tr').each(function(){
-    var factura = document.getElementById("codigo_factura");
-     var cod = $(this).find('td').eq(0).html();
-     var can = $(this).find('#cantidad-prod').val();
-     var cu  = $(this).find('td').eq(3).html();
-     var monto=$(this).find('#monto').val();
-     $.ajax({
-     beforeSend: function(){},
-     url: 'actualiza_pedido.php',
-     type: 'POST',
-     data: 
-     'codigo=' + cod +
-     '&cantidad=' + can +
-     '&costou=' + cu +
-     '&monto=' + monto +
-     '&factura=' + factura ,
-     success: function(x){
-      console.log(data);
-
-     },
-     
-     });
-   });
-
-
-
-}
-
 
 
 

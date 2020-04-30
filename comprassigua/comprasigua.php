@@ -656,13 +656,13 @@ foreach($registros1 as $montoprueba):
           </button>
         </div>
         <form id="mImprimir">
-          
-        
+          <div class="modal-body">
+            <input type="hidden" id="fact" name="fact" class="factura">
+            <input type="hidden" id="codigo_pedido" name="codigo_pedido" class="codigo_pedido1">
+            <input type="hidden" id="cantidad_pedido" name="cantidad_pedido" class="cantidad_pedido1">
+            <input type="hidden" id="monto_pedido" name="monto_pedido" class="monto_pedido1">
+        </div>
         <div class="modal-footer" id="footer-imprimir">
-        <input type="text" id="fact" class="factu">
-        <input type="text" id="codigo_pedido" class="codigo_pedido">
-        <input type="text" id="cantidad_pedido" class="cantidad_pedido">
-        <input type="text" id="monto_pedido" class="monto_pedido">
         
         
 
