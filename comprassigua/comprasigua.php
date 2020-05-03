@@ -457,8 +457,8 @@ foreach($registros1 as $montoprueba):
 
     foreach($PreProcesada as $persona):
 
-$factura_pendiente= $persona->codigo_pedido;
-$registros1=$base->query("SELECT * FROM orden_pedido WHERE num_factura='$factura_pendiente'")->fetchAll(PDO::FETCH_OBJ);  
+$factura_pendiente= $persona->num_factura;
+$registros1=$base->query("SELECT * , SUM(costo*cantidad) AS monto FROM orden_pedido WHERE num_factura='$factura_pendiente'")->fetchAll(PDO::FETCH_OBJ);  
 $monto1=0;
 foreach($registros1 as $montoprueba):
   $prueba= $montoprueba-> monto;
@@ -470,10 +470,10 @@ foreach($registros1 as $montoprueba):
           <tr>
             <td class="text-center"><?php echo $factura_pendiente;?></td>
             <td class="text-center"><?php echo $montoprueba->estado?></td>
-            <td class="text-center"><?php echo $montoprueba->total?></td>
+            <td class="text-center"><?php echo $prueba?></td>
             
-            <td class="bot text-center"><a href="eliminarordendecompra.php?Id=<?php echo $montoprueba->num_factura?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
-            <a type="button"  id="btnEditar"  style="margin: 5px;" class="btn btn-warning btnEditar" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
+            <td class="bot text-center">
+            <a type="button"  id="btnEditar1"  style="margin: 5px;" class="btn btn-warning btnEditar1" data-target= "modalcomprar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
           </tr>
           
         </tbody>
@@ -668,6 +668,33 @@ foreach($registros1 as $montoprueba):
 
           <button class="btn btn-secondary" type="button" id="cancel-no" data-dismiss="modal">No</button>
           <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa-si' value="Si"></input>
+        </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+
+<!--Modal Compra-->
+<div class="modal fade" id="modalcompra"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"></h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form id="mCompra">
+          <div class="modal-body pruebass">Detalle de Orden de compra.
+          <div class="modal-body detalle_de_pedido" id='detalle_de_pedido'>
+          </div>
+        </div>
+        
+        <div class="modal-footer" id="footer-modificar">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa' value="Procesar"></input>
         </div>
       </form>
 

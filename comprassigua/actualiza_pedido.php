@@ -20,36 +20,34 @@ $busquedavalores=$base->query("SELECT * FROM temp WHERE codigo_pedido='$factura'
 foreach ($busquedavalores as $agrego) {
     $factutras=$agrego->codigo_pedido;
     $codigotras=$agrego->codigo_producto;
-    //$desctras=$agrego->descripcion_producto;
+    $desctras=$agrego->descripcion_producto;
     $costotras=$agrego->costoU;
     $cantidadtras=$agrego->cantidad;
     $totaltras=$agrego->costo_total;
     $proveedor=$agrego->codigo_proveedor;
     $user=$agrego->usuario;
     $estado="Pendiente";
-    echo $cantidadtras;
-    echo $totaltras;
-    echo $proveedor;
+   
     
 
     
-    /*
+
   try {
         //code...
         
-        $agregoaordenpedido="INSERT INTO orden_pedido(num_factura, cantidad, costo, nombre_usuario, 
-            proveedor, subtotal, estado)
-        VALUES(:myfactu, :mycanti, :mycosto, :myuser, :myproveedor, :mysub, :myestado)";
+        $agregoaordenpedido="INSERT INTO orden_pedido(num_factura, cod_producto, cantidad, costo, desc_producto, nombre_usuario, 
+            proveedor, sub_total, estado)
+        VALUES(:myfactu, :mycode, :mycanti, :mycosto, :mydesc, :myuser, :myproveedor, :mysub, :myestado)";
         $resultado = $base->prepare($agregoaordenpedido);
-        $resultado->execute(array(":myfactu"=>$factutras, ":mycanti"=>$cantidadtras,
-            ":mycosto"=>$costotras,  ":myuser"=>$user, ":myproveedor"=>$proveedor, 
+        $resultado->execute(array(":myfactu"=>$factutras,":mycode"=>$codigotras, ":mycanti"=>$cantidadtras,
+            ":mycosto"=>$costotras, ":mydesc"=>$desctras, ":myuser"=>$user, ":myproveedor"=>$proveedor, 
             ":mysub"=> $totaltras, ":myestado"=>$estado));
     } catch (Exception $e) {
         //throw $th;
         die("Error: " . $e->getMessage());
     }
 
-*/
+
 }
 
 

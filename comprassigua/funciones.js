@@ -81,6 +81,42 @@ $(document).on("click",".btnEditar",function(){
 })
     
 /*************************Final modal editar orden de compra************************************************* */
+
+/*************************Funcion para modal compras********************************************************* */
+
+$(document).on("click",".btnEditar1",function(){
+  fila=$(this).closest("tr");
+
+  id=fila.find('td:eq(0)').text();
+  $(".modal-title").text("Compra pendiente");
+  $(".modal-header").css("background-color","#4e6c2a");
+  $(".modal-header").css("color","white");
+  $("#modalcompra").modal("show");
+  $("#iduseru").val(id);
+  ide = id;
+  $.ajax({
+    type:"POST",
+    url:"comprapendiente.php",
+    datatype:"json",
+    data:{ide:ide},
+    success: function(data){
+        console.log(data);
+        
+        $(".pruebass").html("");
+        $(".pruebass").append("Detalle de P </span>");
+        $(".pruebass").html(data);
+        calcular_total1();
+    },
+    error: function(jqXHR,estado,error){
+      $(".pruebass").html('Hubo un error: ');
+    }
+  
+});
+
+  
+})
+
+/*************************Fin de Funcion********************************************************************* */
 /*************************Guardar pedido para imprimir compra***************************************************/
 
 $("#mModificar").submit(function(e){
@@ -261,6 +297,20 @@ function calcula_monto(){
  });
 }
 
+function calcula_monto1(){
+  $('#tabla_articulos1 > tbody > tr').each(function(){
+ var precio1 = parseInt($(this).find('td').eq(2).html());
+ var cantidad1 = parseInt($(this).find('#cantidad-prod1').val());
+ var result1 = precio1*cantidad1;
+ result1 = result1.toFixed();
+ $(this).find('#monto1').val(result1);
+
+ calcular_total1();
+ 
+ 
+ });
+}
+
 /*******************************************************************************************/
 
 
@@ -277,6 +327,20 @@ function calcular_total(){
   }
   total = total.toString();
   $('#total').val(total);
+    // });
+    // });
+}
+
+function calcular_total1(){
+  var array1 = document.getElementsByClassName('product-subtotal1');
+  var total1 = 0;
+  for(var g=0; g<array1.length; g++){
+    var value1 = parseFloat(array1[g].value);
+    total1 += value1;
+    
+  }
+  total1 = total1.toString();
+  $('#total1').val(total1);
     // });
     // });
 }
