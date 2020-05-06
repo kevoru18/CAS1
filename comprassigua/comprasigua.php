@@ -409,7 +409,7 @@ foreach($registros1 as $montoprueba):
             <td class="text-center"><?php echo $prueba;?></td>
             
             <td class="bot text-center"><a href="eliminarordendecompra.php?Id=<?php echo $montoprueba->codigo_pedido?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
-            <a type="button"  id="btnEditar"  style="margin: 5px;" class="btn btn-warning btnEditar" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
+            <a type="button"  id="btnEditartemp"  style="margin: 5px;" class="btn btn-warning btnEditartemp" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
           </tr>
           
         </tbody>
@@ -473,7 +473,7 @@ foreach($registros1 as $montoprueba):
             <td class="text-center"><?php echo $prueba?></td>
             
             <td class="bot text-center">
-            <a type="button"  id="btnEditar1"  style="margin: 5px;" class="btn btn-warning btnEditar1" data-target= "modalcomprar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
+            <a type="button"  id="btnEditarpedido"  style="margin: 5px;" class="btn btn-warning btnEditarpedido" data-target= "modalcomprar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
           </tr>
           
         </tbody>
@@ -687,7 +687,7 @@ foreach($registros1 as $montoprueba):
           </button>
         </div>
         <form id="mCompra">
-          <div class="modal-body pruebass">Detalle de Orden de compra.
+          <div class="modal-body compraprueba">Detalle de Orden de compra.
           <div class="modal-body detalle_de_pedido" id='detalle_de_pedido'>
           </div>
         </div>

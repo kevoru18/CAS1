@@ -15,6 +15,10 @@ $actualizada="UPDATE temp SET cantidad= :cantidad, costo_total= :sub, estado='Pr
 
 $actualizo=$base->prepare($actualizada);
 $actualizo->execute(array(":cantidad"=>$cantidad,":sub"=>$precio, ":factura"=>$factura, ":codigo"=>$codigo));
+
+
+
+
 //Agregar a nueva tabla
 $busquedavalores=$base->query("SELECT * FROM temp WHERE codigo_pedido='$factura'")->fetchAll(PDO::FETCH_OBJ);
 foreach ($busquedavalores as $agrego) {

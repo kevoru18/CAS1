@@ -59,20 +59,21 @@ foreach($pendientes as $posibles):
 ?>
 <th scope="row" id="codigo-producto"><?php echo $posibles->codigo_producto?></th>
 <td><?php echo $posibles->descripcion_producto?></td>
-<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prod' value=<?php echo $posibles->cantidad?> onkeyup='calcula_monto();' onclick=' calcula_monto();'></td>
+<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prodtemp' value=<?php echo $posibles->cantidad?> onkeyup=' calcula_monto();' onclick='calcula_monto(); '></td>
 <td><?php echo $posibles->costoU?></td>
-<td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotal' id='monto' name='product-subtotal' value=<?php echo $posibles->costo_total?> disabled></td>
+<td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotalordenpendiente' id='montotemp' name='product-subtotalordenpendiente' value=<?php echo $posibles->costo_total?> disabled></td>
 
 
 <tr>
 
 <?php endforeach;endforeach;?>
-<tr id='tr2'>
+<tr>
 <td></td>
 <td></td>
 <td></td>
 <td style='font-size: 15px; font-weight: bold; text-align: center;'>Total</td>
-<td><input type='text' class='form-control pull-center' id='total' disabled></td>
+
+<td><input type='text' class='form-control pull-center' id='totalModificar' name='totalModificar' disabled></td>
 </tr>
 </tr>
 </tr>

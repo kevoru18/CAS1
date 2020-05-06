@@ -61,7 +61,7 @@ foreach($pendientes as $posibles):
 <td><?php echo $posibles->desc_producto?></td>
 <td><input type="text" class='form-control pull-center' disabled style='min-width: 80px;' id='cantidad-prod1' value=<?php echo $posibles->cantidad?> ></td>
 <td><?php echo $posibles->costo?></td>
-<td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotal1' id='monto1' name='product-subtotal1' value=<?php echo $posibles->sub_total?> disabled></td>
+<td><input type='text' style='min-width: 80px;' class='form-control pull-center subtotal2' id='monto2' name='subtotal2' value=<?php echo $posibles->sub_total?> disabled></td>
 
 
 <tr>
