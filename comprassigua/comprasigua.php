@@ -424,7 +424,7 @@ foreach($registros1 as $montoprueba):
 <div class="card shadow mb-4">
   <div class="card-header py-3">
   
-    <h6 class="m-0 font-weight-bold text-primary">Orden de compra PreProcesada</h6>
+    <h6 class="m-0 font-weight-bold text-primary">Orden de compra Procesada</h6>
    
     
   </div>
@@ -711,6 +711,8 @@ foreach($registros1 as $montoprueba):
   <script>
   function cerrarmodal(){
   $('#modalagregar').modal('hide');
+  $('#modalmodificar').modal('hide');
+  $('#ModalImprimir').modal('hide');
 
 (function(){
   setInterval(function() {

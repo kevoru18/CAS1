@@ -23,7 +23,7 @@ echo '
 
 <div class="form-group lable-floating">
 <label for="tipo_buscar" class="control-label">Orden Pendiente #</label>
-<input type="text" style="min-width: 100px;" class="form-control pull-center " id="codigo_factura" name="codigo_factura" value="'. $codigo_factura.'" disabled>
+<input type="text" style="min-width: 100px;" class="form-control pull-center codigo_factura" id="codigo_factura" name="codigo_factura" value="'. $codigo_factura.'" disabled>
 <label for="tipo_buscar" class="control-label">Fecha de la Factura:</label>
 <input type="text" style="min-width: 100px;" class="form-control pull-center " id="fecha_pendiente" name="fecha_pendiente" value="'. $fecha .'" disabled>
 ';endforeach;
@@ -59,7 +59,7 @@ foreach($pendientes as $posibles):
 ?>
 <th scope="row" id="codigo-producto"><?php echo $posibles->codigo_producto?></th>
 <td><?php echo $posibles->descripcion_producto?></td>
-<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prodtemp' value=<?php echo $posibles->cantidad?> onkeyup=' calcula_monto();' onclick='calcula_monto(); '></td>
+<td><input type="number" class='form-control pull-center' style='min-width: 80px;' id='cantidad-prodtemp' value=<?php echo $posibles->cantidad?> onkeyup=' actualiza_pedido(); calcula_monto(); ' onclick='actualiza_pedido(); calcula_monto();'></td>
 <td><?php echo $posibles->costoU?></td>
 <td><input type='text' style='min-width: 80px;' class='form-control pull-center product-subtotalordenpendiente' id='montotemp' name='product-subtotalordenpendiente' value=<?php echo $posibles->costo_total?> disabled></td>
 

@@ -291,6 +291,7 @@ function calcula_monto(){
  var cantidad = parseInt($(this).find('#cantidad-prodtemp').val());
  var result = precio*cantidad;
  result = result.toFixed();
+ actualiza_pedido();
  $(this).find('#montotemp').val(result);
  calcular_total();
  
@@ -343,20 +344,19 @@ function calcular_total_pendiente(){
 
 /***************************Actualiza Pedido********************************************** */
 function actualiza_pedido(){
-                  $('#tabla_articulos > tbody > #tr').each(function(){
-                    var descripcion_art=$(this).find('#codigo_factura').val();
-                     var cod = $(this).find('td').eq(0).html();
-                     var can = $(this).find('#cantidad-prod').val();
-                     var cu  = $(this).find('td').eq(3).html();
-                     var monto=$(this).find('#monto').val();
+                  $('#tabla_articulos > tbody > tr').each(function(){
+                     descripcion_art=$.trim($("#codigo_factura").val());
+                     cod = $("#codigo-producto").text(); 
+                     can = $.trim($('#cantidad-prodtemp').val());
+                     monto =$.trim($('#montotemp').val());
+                     
                      $.ajax({
-                     beforeSend: function(){
-                      },
+                     beforeSend: function(){},
                      url: 'actualiza_pedidokey.php',
                      type: 'POST',
                      dataType:'json',
                      data:{ descripcion_art: descripcion_art, cod: cod,
-                      can:can, cu: cu, monto: monto
+                      can:can,  monto: monto
 
                      } ,
                      success: function(data){
@@ -365,8 +365,7 @@ function actualiza_pedido(){
                      });
                    });
                 
-                   
-
+          
                    
               
  }

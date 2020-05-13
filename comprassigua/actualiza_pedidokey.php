@@ -4,17 +4,25 @@ require("../Conection/config.php");
 
 /*Recepción de información*/
 
-$factura= (isset($_POST['descripcion_art'])) ? $_POST['descripcion_art'] : "";
-$codigo= (isset($_POST['cod'])) ? $_POST['cod'] : "";
-$cantidad= (isset($_POST['can'])) ? $_POST['can'] : "";
-$precio=(isset($_POST['monto'])) ? $_POST['monto'] : ""; 
+$facturarecibida[]= (isset($_POST['descripcion_art'])) ? $_POST['descripcion_art'] : "";
+$codigorecibida[]= (isset($_POST['cod'])) ? $_POST['cod'] : "";
+$cantidadrecibida[]= (isset($_POST['can'])) ? $_POST['can'] : "";
+$preciorecibida[]=(isset($_POST['monto'])) ? $_POST['monto'] : ""; 
+for($recorre=0; $recorre<=$factura; $recorre++){
+    $factura=$facturarecibida[$recorre];
+    $codigo=$codigorecibida[$recorre];
+    $cantidad=$cantidadrecibida[$recorre];
+    $precio=$preciorecibida[$recorre];
 
 
-$actualizada="UPDATE temp SET cantidad= :cantidad, costo_total= :sub
- WHERE codigo_pedido=:factura AND codigo_producto=:codigo";
+    $actualizar="UPDATE temp SET cantidad= :mycantidad, costo_total= :mysub
+    WHERE codigo_pedido=:myfactura AND codigo_producto=:mycodigo";
+   
+   $actualizacion=$base->prepare($actualizar);
+   $actualizacion->execute(array(":mycantidad"=>$cantidad,":mysub"=>$precio, ":myfactura"=>$factura, ":mycodigo"=>$codigo));
 
-$actualizo=$base->prepare($actualizada);
-$actualizo->execute(array(":cantidad"=>$cantidad,":sub"=>$precio, ":factura"=>$factura, ":codigo"=>$codigo));
+
+}
 
 
 
