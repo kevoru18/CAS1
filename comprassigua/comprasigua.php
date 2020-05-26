@@ -657,7 +657,7 @@ foreach($registros1 as $montoprueba):
         </div>
         <form id="mImprimir">
           
-            <input type="hidden" id="fact" name="fact" class="factura">
+            <input type="text" id="fact" name="fact" class="factura">
             <input type="hidden" id="codigo_pedido" name="codigo_pedido" class="codigo_pedido1">
             <input type="hidden" id="cantidad_pedido" name="cantidad_pedido" class="cantidad_pedido1">
             <input type="hidden" id="monto_pedido" name="monto_pedido" class="monto_pedido1">

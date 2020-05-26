@@ -4,26 +4,29 @@ require("../Conection/config.php");
 
 /*Recepción de información*/
 
-$facturarecibida[]= (isset($_POST['cod_fact'])) ? $_POST['cod_fact'] : "";
+$facturarecibida= (isset($_POST['cod_fact'])) ? $_POST['cod_fact'] : "";
 $codigorecibida[]= (isset($_POST['producto'])) ? $_POST['producto'] : "";
 $cantidadrecibida[]= (isset($_POST['canti'])) ? $_POST['canti'] : "";
 $preciorecibida[]=(isset($_POST['precio'])) ? $_POST['precio'] : ""; 
+$numero_factura=$base->query("SELECT * FROM temp WHERE estado='Pendiente' AND codigo_pedido=$facturarecibida")->fetchAll(PDO::FETCH_OBJ);
+foreach($numero_factura as $num_fact):
+    $fact_pendien=$num_fact->codigo_pedido;
 
-for($recorre=0; $recorre<=$facturarecibida; $recorre++){
+for($recorre=0; $recorre<=$factura; $recorre++){
     $factura=$facturarecibida[$recorre];
     $codigo=$codigorecibida[$recorre];
     $cantidad=$cantidadrecibida[$recorre];
     $precio=$preciorecibida[$recorre];
 
-    $actualizada="UPDATE temp SET cantidad= :cantidad, costo_total= :sub, estado='Procesado'
-    WHERE codigo_pedido=:factura AND codigo_producto=:codigo";
+    $actualizada="UPDATE temp SET  estado='Procesado'
+    WHERE codigo_pedido=:factura ";
    
    $actualizo=$base->prepare($actualizada);
-   $actualizo->execute(array(":cantidad"=>$cantidad,":sub"=>$precio, ":factura"=>$factura, ":codigo"=>$codigo));
+   $actualizo->execute(array( ":factura"=>$factura,));
    
    
    
-   
+   /*
    //Agregar a nueva tabla
    $busquedavalores=$base->query("SELECT * FROM temp WHERE codigo_pedido='$factura'")->fetchAll(PDO::FETCH_OBJ);
    foreach ($busquedavalores as $agrego) {
@@ -60,8 +63,8 @@ for($recorre=0; $recorre<=$facturarecibida; $recorre++){
    }
    
    
-
+*/
 }
-
+endforeach;
 /*Falta corregir el actualizar los datos de la tabla temp*/
 ?>
