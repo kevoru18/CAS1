@@ -17,60 +17,11 @@ if ($_SESSION['permits']=='Administrador') {
 
   menuad();
 }
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Taulabe') {
+if ($_SESSION['permits']=='Contador') {
 
   menutaula();
 }
 
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Otoro') {
-
-  menuotoro();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Nacaome') {
-
-  menunacaome();
-}
-
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Mojaras') {
-
-  menumonjaras();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Comayagua') {
-
-  menucomayagua();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Choluteca') {
-
-  menucholu();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Santa Barbara') {
-
-  menuSB();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Santa Rosa') {
-
-  menuSR();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Intibuca') {
-
-  menuintibuca();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Progreso') {
-
-  menuprogre();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Marcala') {
-
-  menumarca();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='Gracias') {
-
-  menugracias();
-}
-if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='SEMESUR') {
-
-  menuSEMESUR();
-}
 
 ?>
 <!-- Begin Page Content -->
@@ -113,7 +64,7 @@ if ($_SESSION['permits']=='Contador' && $_SESSION['oficina']=='SEMESUR') {
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Desarrollador</h4>
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-copyright"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
+                            <li><i class="fab fa-twitter"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
                             
                        
                        

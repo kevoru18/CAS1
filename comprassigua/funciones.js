@@ -21,9 +21,14 @@ $("#mAgregar").submit(function(e){
     descripcionactivo = $.trim($("#descripcionactivo").val());
     costo = $.trim($("#costo").val());
     cantidadpro = $.trim($("#cantidadpro").val());
-    
+    proveedorcod=document.getElementById('proveedorcod');
+    codproducto=document.getElementById('codproducto'); 
+    $('.guardado').val('');
+        proveedorcod.disabled = true;
+        codproducto.focus();
     
     $.ajax({
+
         url:"pedidotemp.php",
 
         type:"POST",
@@ -36,6 +41,11 @@ $("#mAgregar").submit(function(e){
           costo: costo,  cantidadpro: cantidadpro},
         success: function(data){
             console.log(data);
+            if (data==0) {
+              alert("Agregado");
+            }else{ alert("algo");
+          
+                }
            
             
         }
@@ -150,6 +160,7 @@ $("#mImprimir").submit(function(e){
     producto = $.trim($("#codigo_pedido").val());
     canti = $.trim($('#cantidad_pedido').val());
     precio = $.trim($('#monto_pedido').val());
+    
     $.ajax({
       url:"actualiza_pedido.php",
       type: "POST",
@@ -163,7 +174,7 @@ $("#mImprimir").submit(function(e){
       }
 
     });
-
+    window.open("factura.php?refact="+cod_fact);
     $('#modalImprimir').modal('hide');
 
     (function(){
@@ -173,7 +184,7 @@ $("#mImprimir").submit(function(e){
              200)
      })()
 
-
+     
   });
 
 
@@ -181,6 +192,59 @@ $("#mImprimir").submit(function(e){
 
 
 /*************************FinalFuncion de orden de impresión************************************************* */
+/***************Modal de compras */
+
+$("#mCompra").submit(function(e){
+  e.preventDefault();
+  id=$.trim($('#codigo_factura').val());
+  ide2=id;
+  $("#ModalImprimircompra").modal("show");
+  $(".modal-title-imprimir").text("Deseas imprimir la compra #"+id+ "...?");
+  
+  $(".modal-header").css("background-color","#4e6c2a");
+  $(".modal-header").css("color","white");
+  document.getElementById("factcompra").value=id;
+  
+})
+
+
+/****************Funcion de orden de impresión compra************************************************************/
+$("#mImprimircompra").submit(function(e){
+  e.preventDefault();
+    cod_fact = $.trim($("#factcompra").val());
+    
+    $.ajax({
+      url:"guarda_compra.php",
+      type: "POST",
+      dataType: "json",
+      data:{
+        cod_fact: cod_fact},
+      success: function(data){
+        console.log(data);
+      }
+
+    });
+    window.open("compra.php?refact="+cod_fact);
+    $('#modalImprimir').modal('hide');
+
+    (function(){
+      setInterval(function() {
+             document.location.reload()
+         }, 
+             200)
+     })()
+
+     
+  });
+
+
+
+
+
+
+
+
+
 /****************Busca Proveedores************************************************************/
 function busca_prov(){
     if($("#proveedorcod").val()!=""){
@@ -272,7 +336,7 @@ function busca_prod(){
       $('#codproducto').focus();
       }else{
         $("#descripcionactivo").val(x.descripcion);
-        $("#costo").val(x.valor_actual);
+        $("#costo").val(x.valor_libro);
        $("#btn-cancel-prov").attr("disabled", false);
        }
      },
@@ -341,24 +405,117 @@ function calcular_total_pendiente(){
 
 
 /*******************************************************************************************/
+/*****Boton producto agregar */
+$("#btn-producto1").click(function(){
+  id=$.trim($('#codigo_factura').val());
+  provecod=$.trim($('#codigo_proveedor_pendiente').val());
+  provenom=$.trim($('#proveedor_pendiente').val());
+
+  $(".modal-header").css("background-color","#4e6c2a");
+  $(".modal-header").css("color","#d4daed");
+  $("#modalagregarproductomas").modal("show");
+  $(".modal-titlemas").text("Agregar mas producto");
+  document.getElementById("factura_pedidomas1").value=id;
+  document.getElementById("proveedorcodmas").value=provecod;
+  document.getElementById("nombre_provmas").value=provenom;
+  
+
+})
+/*Funciona busca producto mas*/ 
+function busca_prodmas(){
+  if($("#codproductomas").val()!=""){
+ $(document).ready(function(){
+  $.ajax({
+  beforeSend: function(){
+    $("#descripcionactivomas").html("Buscando informacion del Activo...");
+   },
+  url: 'busca_activos.php',
+  type: 'POST',
+  dataType: 'json',
+  data: 'codigoprov='+$("#codproductomas").val(),
+  success: function(x){
+    if(x=='0'){
+    alert("El nombre o codigo del Activo, no existe...");
+    $("#codproductomas").val("");
+    $('#codproductomas').focus();
+    }else{
+      $("#descripcionactivomas").val(x.descripcion);
+      $("#costomas").val(x.valor_libro);
+     $("#btn-cancel-prov").attr("disabled", false);
+     }
+   },
+   error: function(jqXHR,estado,error){
+     $("#descripcionactivomas").html('Hubo un error: '+estado+' '+error);
+   }
+   });
+  });
+  }else{
+  }
+ }
+
+/******Modal factura nueva */
+
+$("#mAgregarproducto").submit(function(e){
+  e.preventDefault();
+  estado="Pendiente";
+  codinuevafactura = $.trim($("#factura_pedidomas1").val());
+  codiproveedor = $.trim($("#proveedorcodmas").val());
+  nombreprov = $.trim($("#nombre_provmas").val());
+  codigoproducto = $.trim($("#codproductomas").val());
+  descripcionactivo = $.trim($("#descripcionactivomas").val());
+  costo = $.trim($("#costomas").val());
+  cantidadpro = $.trim($("#cantidadpromas").val());
+  proveedorcod=document.getElementById('proveedorcodmas');
+  codproducto=document.getElementById('codproductomas'); 
+  
+  $('.guardado').val('');
+      proveedorcod.disabled = true;
+      codproducto.focus();
+      $.ajax({
+      url:"pedidotemp.php",
+
+      type:"POST",
+      
+      dataType:"json",
+      
+      data:{ estado:estado, codinuevafactura:codinuevafactura, codiproveedor:codiproveedor, 
+        nombreprov: nombreprov, codigoproducto: codigoproducto, 
+        descripcionactivo: descripcionactivo, 
+        costo: costo,  cantidadpro: cantidadpro},
+        
+      success: function(data){
+          console.log(data);
+         
+          
+      }
+      
+      
+  });
+
+
+ })
+
+
+
+
 
 /***************************Actualiza Pedido********************************************** */
 function actualiza_pedido(){
                   $('#tabla_articulos > tbody > tr').each(function(){
-                     descripcion_art=$.trim($("#codigo_factura").val());
-                     cod = $("#codigo-producto").text(); 
-                     can = $.trim($('#cantidad-prodtemp').val());
-                     monto =$.trim($('#montotemp').val());
+                     descripcion_art=document.getElementsByName('codigo_factura');
+                     cod = document.getElementsByName('codigo-producto'); 
+                     can = document.getElementsByName('cantidad-prodtemp');
+                     monto =document.getElementsByName('montotemp');
                      
                      $.ajax({
                      beforeSend: function(){},
                      url: 'actualiza_pedidokey.php',
                      type: 'POST',
                      dataType:'json',
-                     data:{ descripcion_art: descripcion_art, cod: cod,
-                      can:can,  monto: monto
+                     data:( 'descripcion_art='+descripcion_art+'&cod='+cod+
+                      '&can='+can+'&monto='+monto
 
-                     } ,
+                      ) ,
                      success: function(data){
                       console.log(data);
                       }

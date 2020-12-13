@@ -6,6 +6,14 @@ if(!isset($_SESSION["usuario"])){
   header("location:../login.html");
 
 }
+
+$usuario=  $_SESSION["usuario"];
+$oficina=  $_SESSION["oficina"];
+$permiso=  $_SESSION["permits"];
+if ($permiso==="Contador") {
+  header("location:../index.php");
+
+}else{
 include('../Conection/conexion.php');
 
 require("../Conection/config.php");
@@ -37,7 +45,7 @@ function desencriptar($texto){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Sistema Control de Activos Comixmul">
   <meta name="author" content="Kevin Rubí">
-
+  <link rel="shortcut icon" href="../img/logo.png" />
   <title>CAS COMIXMUL - Usuarios</title>
 
   <!-- Custom fonts for this template-->
@@ -91,20 +99,8 @@ function desencriptar($texto){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="../sigua/activosigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="#">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Mojaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="../sigua/activosigua.php">Oficina</a>
+
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -122,20 +118,7 @@ function desencriptar($texto){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="#">Siguatepeque</a>
-            <a class="collapse-item" href="#">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Mojaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="../sigua/suministrosigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -150,20 +133,8 @@ function desencriptar($texto){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="../sigua/proveedoressigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="#">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Mojaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="../sigua/proveedoressigua.php">Oficina</a>
+            
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -181,26 +152,52 @@ function desencriptar($texto){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="../comprassigua/comprasigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../comprastaula/comprataulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Monjaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="../comprassigua/comprasigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
       
 
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesentradas" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Entradas</span>
+          </a>
+          <div id="collapsePagesentradas" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Entradas:</h6>
+              <!--<a class="collapse-item" href="login.html">Login</a>-->
+              <a class="collapse-item" href="../entrada/entrada.php">Oficina</a>
+              
+              <div class="collapse-divider"></div>
+            </div>
+            
+          </div>
+        </li>      
+  
+       
+  
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagessalida" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Salida</span>
+          </a>
+          <div id="collapsePagessalida" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Salida:</h6>
+              <!--<a class="collapse-item" href="login.html">Login</a>-->
+              <a class="collapse-item" href="../salida/salida.php">Oficina</a>
+              
+              <div class="collapse-divider"></div>
+            </div>
+            
+          </div>
+        </li>      
+  
+  
      
 
       <!-- Divider -->
@@ -222,19 +219,46 @@ function desencriptar($texto){
             <h6 class="collapse-header">Pantallas Usuarios:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
             <a class="collapse-item" href="users.php">Usuarios</a>
-            <a class="collapse-item" href="../forgot-password.php">Olvido de Password</a>
+            
             <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="../tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Reportes</span></a>
-      </li>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesreportes" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Reportes</span>
+        </a>
+        <div id="collapsePagesreportes" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Opciones de Reportes:</h6>
+            <!--<a class="collapse-item" href="login.html">Login</a>-->
+            
+            <a class="collapse-item" href="../reportes/existencias.php">Listado de existencias</a>
+            <a class="collapse-item" href="../reportes/activosdebaja.php">Activos dados de baja</a>
+            <a class="collapse-item" href="../reportes/entrada_compra.php">Entrada por Compras</a>
+            <a class="collapse-item" href="../reportes/entrada_traslado.php">Entrada por Traslado</a>
+            <a class="collapse-item" href="../reportes/salida_compra.php">Salida por Traslado</a>
+            <a class="collapse-item" href="../reportes/valorlibros.php">Listado de valores en libros</a>
+            <a class="collapse-item" href="../reportes/repor_depre.php">Reporte de Depreciación</a>
+            
 
+            <div class="collapse-divider"></div>
+          </div>
+        </div>
+      </li>
       <!-- Divider -->
+      <hr class="sidebar-divider d-none d-md-block">
+
+      
+      <!-- Nav Item - Tables -->
+      <li class="nav-item">
+        <a class="nav-link" target="_blank" href="../manual/manual.pdf">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Ayuda</span></a>
+      </li>
+<!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
       <!-- Sidebar Toggler (Sidebar) -->
@@ -262,13 +286,7 @@ function desencriptar($texto){
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Busqueda..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <a  class="btn btn-success" role="button" href="prueba.php">
-                  <i class="fas fa-search fa-sm"></i>
-              </a>
               </div>
-            </div>
           </form>
 
           <!-- Topbar Navbar -->
@@ -285,7 +303,7 @@ function desencriptar($texto){
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["nombre"]?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Salir</span>
                 <!--! <img class="img-profile rounded-circle" src="C:\wamp\www\Activos Comixmul\img\prueba.jpg">-->
               </a>
               <!-- Dropdown - User Information -->
@@ -323,6 +341,13 @@ function desencriptar($texto){
     <div class="table-responsive" id="tablausuarios">
       <table class="table table-bordered" id="tablausuarios" width="100%" cellspacing="0">
         <thead>
+        <div class="col">
+           
+           <input type="text"  class="form-control guardado"autocomplete="off" style=""  list="busqueda" id="busquedausuario"  placeholder="Ingrese el nombre, cargo, oficina, permiso de acceso o usuario del usuario a buscar..." ><br>
+           
+         
+         </div>
+       
           <tr> 
             <th>Código</th>
             <th>Nombre</th>
@@ -356,35 +381,10 @@ function desencriptar($texto){
         </tfoot>
 
 
-  <?php
-    foreach($registros as $persona):
-      
-      
-
-    ?>
-        <tbody>
-          <tr>
-            <td><?php echo $persona->Id?></td>
-            <td><?php echo $persona->Name?></td>
-            <td><?php echo $persona->Phone?></td>
-            <td><?php echo $persona->Position?></td>
-            <td><?php echo $persona->Office?></td>
-            <td><?php echo $persona->Acces_permits?></td>
-            <td><?php echo $persona->Status?></td>
-            <td><?php echo $persona->User_Name?></td>
-            <td><?php echo $persona->Password?></td>
-            <td><?php echo $persona->Email?></td>   
-               
-              
-            <td class="bot">
-              <a title="Inactivar" href="inactivar_usuario.php?Id=<?php echo $persona->Id?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
-              <a type="button"  id="btnEditar"  title="Editar" style="margin: 5px;" class="btn btn-warning btnEditar" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i>
-            </td>
-           
-          </tr>
+        <tbody id="user">
           
         </tbody>
-    <?php endforeach;?>
+    
       </table>
     </div>
   </div>
@@ -410,7 +410,7 @@ function desencriptar($texto){
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Desarrollador</h4>
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-copyright"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
+                            <li><i class="fab fa-twitter"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
                             
                        
                        
@@ -456,9 +456,9 @@ function desencriptar($texto){
         </div>
         <form id="mAgregar">
         <div class="modal-body ">
-          <label>Nombre</label><input type="text" class="form-control input-sm" id="namea" >
-          <label >Teléfono</label><input type="text" class="form-control input-sm" id="phonea" >
-          <label >Cargo</label><input type="text" class="form-control input-sm" id="positiona" >
+          <label>Nombre</label><input autocomplete="off" type="text" class="form-control input-sm" id="namea" >
+          <label >Teléfono</label><input type="text" autocomplete="off" class="form-control input-sm" id="phonea" >
+          <label >Cargo</label><input type="text" class="form-control input-sm" autocomplete="off" id="positiona" >
           <label >Oficina</label>
           <select class='form-control' id="officea">
                 <option >Siguatepeque</option>
@@ -485,9 +485,9 @@ function desencriptar($texto){
                 <option >Activo</option>
                 <option >Inactivo</option>
                 </select>
-          <label >Usuario</label><input type="text" class="form-control input-sm" id="usera">
-          <label >Clave</label><input type="text" class="form-control input-sm" id="passa" >
-          <label >Correo Electronico</label><input type="text" class="form-control input-sm" id="emaila">
+          <label >Usuario</label><input type="text" class="form-control input-sm" autocomplete="off" id="usera">
+          <label >Clave</label><input type="text" class="form-control input-sm" autocomplete="off" id="passa" >
+          <label >Correo Electronico</label><input type="text" class="form-control input-sm" autocomplete="off" id="emaila">
         
         </div>
         <div class="modal-footer">
@@ -547,7 +547,7 @@ function desencriptar($texto){
           <label >Usuario</label><input type="text" class="form-control input-sm" id="useru">
           <label >Clave</label><input type="text" class="form-control input-sm" id="passu" >
           <label >Correo Electronico</label><input type="text" class="form-control input-sm" id="emailu">
-          <label >Imagen</label><input type="file" class="form-control input-sm" id="imageu">
+          
 
         </div>
         </div>
@@ -591,6 +591,7 @@ function desencriptar($texto){
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
   <script src="funciones.js" type="text/javascript"> </script>
+  <script src="../js/cas/busqueda.js" type="text/javascript"> </script>
 
   <!-- Page level plugins -->
   <script src="../vendor/chart.js/Chart.min.js"></script>
@@ -602,3 +603,7 @@ function desencriptar($texto){
 </body>
 
 </html>
+<?php
+
+}
+?>

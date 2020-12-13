@@ -1,6 +1,6 @@
 <?php
 include('../Conection/conexion.php');
-
+include ("../Conection/password.php");
 require("../Conection/config.php");
 echo "Estas a punto de modificar un archivo";
 /*Recepción de información*/
@@ -15,12 +15,13 @@ $user = (isset($_POST['user'])) ? $_POST['user'] : "";
 $pass = (isset($_POST['pass'])) ? $_POST['pass'] : "";
 $email = (isset($_POST['email'])) ? $_POST['email'] : "";
 echo ($ide);
+$passcifrado = password_hash($pass, PASSWORD_DEFAULT);
 $sql="UPDATE user SET Name=:myname, Phone=:myphone, Position=:myposition, Office=:myoffice, 
 Acces_permits=:mypermits, Status=:mystatus, User_Name=:myuser, Password=:mypass, Email=:myemail WHERE Id=:myid";
 $resultado=$base->prepare($sql);
 $resultado->execute(array(":myid"=>$ide, ":myname"=>$nombre,":myphone"=>$phone,":myposition"=>$position,
     ":myoffice"=>$office,":mypermits"=>$permits,":mystatus"=>$status,":myuser"=>$user,
-    ":mypass"=>$pass,":myemail"=>$email));
+    ":mypass"=>$passcifrado,":myemail"=>$email));
 header("location:users.php");
 
 ?>

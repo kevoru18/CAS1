@@ -13,7 +13,7 @@ require("../Conection/conec.php");
 
 
 $codigo=$_POST['codigoprov'];
-$cadena="SELECT p.descripcion, p.valor_actual FROM activossigua p WHERE p.Id='$codigo'";
+$cadena="SELECT p.descripcion, p.valor_libro FROM activossigua p WHERE p.Id='$codigo'";
 $exe=mysqli_query($db,$cadena);
  if(mysqli_num_rows($exe)>0){
    $array=array();

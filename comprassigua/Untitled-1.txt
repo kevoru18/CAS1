@@ -1,0 +1,36 @@
+
+function actualiza_orden() {
+  $("#tabla_farmacia > tbody > #tr").each(function () {
+    var n_orden = document.getElementById("n_orden").value;
+
+    var descripcion_art = $(this).find("td").eq(1).html();
+    var cod = $(this).find("td").eq(0).html();
+    var can = $(this).find("#cantidad").val();
+    var dosis = $(this).find("#dosis").val();
+    var cu = $(this).find("td").eq(4).html();
+    var monto = $(this).find("#monto").val();
+
+    $.ajax({
+      beforeSend: function () {},
+      url: "./ajax/update_farmacia.php",
+      type: "POST",
+      data:
+        "codigo=" +
+        cod +
+        "&cantidad=" +
+        can +
+        "&dosis=" +
+        dosis +
+        "&preciou=" +
+        cu +
+        "&monto=" +
+        monto +
+        "&n_orden=" +
+        n_orden,
+
+      success: function (x) {
+        // '&num_fact='+$("#id_pedido").val()
+      }
+    });
+  });
+}

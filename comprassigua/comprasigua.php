@@ -6,6 +6,15 @@ if(!isset($_SESSION["usuario"])){
   header("location:../login.html");
 
 }
+
+$usuario=  $_SESSION["usuario"];
+$oficina=  $_SESSION["oficina"];
+$permiso=  $_SESSION["permits"];
+if ($permiso==="Contador") {
+  header("location:compras.php");
+
+}else{
+
 include('../Conection/conexion.php');
 
 require("../Conection/config.php");
@@ -45,6 +54,7 @@ function obtenerNuevoId(){
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Sistema Control de Activos Comixmul">
   <meta name="author" content="Kevin Rubí">
+  <link rel="shortcut icon" href="../img/logo.png" />
 
   <title>CAS COMIXMUL - Compras Siguatepeque</title>
 
@@ -99,20 +109,7 @@ function obtenerNuevoId(){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="../sigua/activosigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../taulabe/activotaulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="../otoro/activootoroadm.php">Otoro</a>
-            <a class="collapse-item" href="../nacaome/activonacaomeadm.php">Nacaome</a>
-            <a class="collapse-item" href="../monjaras/activomonjarasadm.php">Monjaras</a>
-            <a class="collapse-item" href="../coma/activocomaadm.php">Comayagua</a>
-            <a class="collapse-item" href="../cholu/activocholuadm.php">Choluteca</a>
-            <a class="collapse-item" href="../sb/activosbadm.php">Santa Barbara</a>
-            <a class="collapse-item" href="../sr/activosradm.php">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="../inti/activointiadm.php">Intibucá</a>
-            <a class="collapse-item" href="../progre/activoprogreadm.php">Progreso</a>
-            <a class="collapse-item" href="../marcala/activomarcalaadm.php">Marcala</a>
-            <a class="collapse-item" href="../lp/activolpadm.php">Gracias Lempira</a>
-            <a class="collapse-item" href="../semesur/activosemesuradm.php">SEMESUR</a>
+            <a class="collapse-item" href="../sigua/activosigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -130,20 +127,7 @@ function obtenerNuevoId(){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="../sigua/suministrosigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../taulabe/suministrotaulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="../otoro/suministrootoroadm.php">Otoro</a>
-            <a class="collapse-item" href="../nacaome/suministronacaomeadm.php">Nacaome</a>
-            <a class="collapse-item" href="../monjaras/suministromonjarasadm.php">Monjaras</a>
-            <a class="collapse-item" href="../coma/suministrocomaadm.php">Comayagua</a>
-            <a class="collapse-item" href="../cholu/suministrocholuadm.php">Choluteca</a>
-            <a class="collapse-item" href="../sb/suministrosbadm.php">Santa Barbara</a>
-            <a class="collapse-item" href="../sr/suministrosradm.php">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="../inti/suministrointiadm.php">Intibucá</a>
-            <a class="collapse-item" href="../progre/suministroprogreadm.php">Progreso</a>
-            <a class="collapse-item" href="../marcala/suministromarcalaadm.php">Marcala</a>
-            <a class="collapse-item" href="../lp/suministrolpadm.php">Gracias Lempira</a>
-            <a class="collapse-item" href="../semesur/suministrosemesuradm.php">SEMESUR</a>
+            <a class="collapse-item" href="../sigua/suministrosigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -159,20 +143,7 @@ function obtenerNuevoId(){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="../sigua/proveedoressigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../taulabe/proveedortaulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="../otoro/proveedorotoroadm.php">Otoro</a>
-            <a class="collapse-item" href="../nacaome/proveedornacaomeadm.php">Nacaome</a>
-            <a class="collapse-item" href="../monjaras/proveedormonjarasadm.php">Monjaras</a>
-            <a class="collapse-item" href="../coma/proveedorcomaadm.php">Comayagua</a>
-            <a class="collapse-item" href="../cholu/proveedorcholuadm.php">Choluteca</a>
-            <a class="collapse-item" href="../sb/proveedorsbadm.php">Santa Barbara</a>
-            <a class="collapse-item" href="../sr/proveedorsradm.php">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="../inti/proveedorintiadm.php">Intibucá</a>
-            <a class="collapse-item" href="../progre/proveedorprogreadm.php">Progreso</a>
-            <a class="collapse-item" href="../marcala/proveedormarcalaadm.php">Marcala</a>
-            <a class="collapse-item" href="../lp/proveedorlpadm.php">Gracias Lempira</a>
-            <a class="collapse-item" href="../semesur/proveedorsemesuradm.php">SEMESUR</a>
+            <a class="collapse-item" href="../sigua/proveedoressigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -192,20 +163,7 @@ function obtenerNuevoId(){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="comprasigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="comprastaula/comprataulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Monjaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="comprasigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -223,26 +181,31 @@ function obtenerNuevoId(){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Entradas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="entradas/entradasigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="entradastaula/entradataulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Monjaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="../entrada/entrada.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
           
         </div>
       </li>      
 
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagessalida" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Salida</span>
+          </a>
+          <div id="collapsePagessalida" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Salida:</h6>
+              <!--<a class="collapse-item" href="login.html">Login</a>-->
+              <a class="collapse-item" href="../salida/salida.php">Oficina</a>
+              
+              <div class="collapse-divider"></div>
+            </div>
+            
+          </div>
+        </li>      
+  
 
 
            
@@ -266,21 +229,43 @@ function obtenerNuevoId(){
             <h6 class="collapse-header">Opciones Usuarios:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
             <a class="collapse-item" href="../usuarios/users.php">Usuarios</a>
-            <a class="collapse-item" href="../forgot-password.php">Olvido de Password</a>
+
             <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
       <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="../tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Reportes</span></a>
-      </li>
+ <!-- Nav Item - Pages Collapse Menu -->
+ <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesreportes" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Reportes</span>
+        </a>
+        <div id="collapsePagesreportes" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Opciones de Reportes:</h6>
+            <!--<a class="collapse-item" href="login.html">Login</a>-->
+            
+            <a class="collapse-item" href="../reportes/existencias.php">Listado de existencias</a>
+            <a class="collapse-item" href="../reportes/activosdebaja.php">Activos dados de baja</a>
+            <a class="collapse-item" href="../reportes/entrada_compra.php">Entrada por Compras</a>
+            <a class="collapse-item" href="../reportes/entrada_traslado.php">Entrada por Traslado</a>
+            <a class="collapse-item" href="../reportes/salida_compra.php">Salida por Traslado</a>
+            <a class="collapse-item" href="../reportes/valorlibros.php">Listado de valores en libros</a>
+            <a class="collapse-item" href="../reportes/repor_depre.php">Reporte de Depreciación</a>
+            
 
-      <!-- Divider -->
+            <div class="collapse-divider"></div>
+          </div>
+        </div>
+      </li>      <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
+ <!-- Nav Item - Tables -->
+ <li class="nav-item">
+        <a class="nav-link" target="_blank" href="../manual/manual.pdf">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Ayuda</span></a>
+      </li>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -306,12 +291,7 @@ function obtenerNuevoId(){
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Busqueda..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-success" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
+              
             </div>
           </form>
 
@@ -329,7 +309,7 @@ function obtenerNuevoId(){
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["nombre"]?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Salir</span>
                 <!--! <img class="img-profile rounded-circle" src="C:\wamp\www\Activos Comixmul\img\prueba.jpg">-->
               </a>
               <!-- Dropdown - User Information -->
@@ -352,13 +332,13 @@ function obtenerNuevoId(){
 <div class="container-fluid">
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Compras Siguatepeque.</h1>
+<h1 class="h3 mb-2 text-gray-800">Compras</h1>
 <p class="mb-4"><?php echo $_SESSION["nombre"]?></p>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-  <button id="btnNuevo" type="button" href="#" class="btn btn-success btn-lg active btn btn-sm" data-toggle="modal" >Nueva Orden de Compra <i class="fas fa-plus-circle"></i></button>
+  <button id="btnNuevo" type="button" href="#" class="btn btn-success btn-lg active btn btn-sm" title="Nueva orden de compra" data-toggle="modal" >Nueva Orden de Compra <i class="fas fa-plus-circle"></i></button>
   <br><br>
     <h6 class="m-0 font-weight-bold text-primary">Orden de compra en lista</h6>
    
@@ -374,6 +354,7 @@ function obtenerNuevoId(){
             <th class="text-center"># Pedido</th>
             <th class="text-center">Estado</th>
             <th class="text-center">Monto</th>
+            <th class="text-center">Oficina</th>
             <th class="text-center">Opciones</th>
             
             </tr>
@@ -383,6 +364,7 @@ function obtenerNuevoId(){
           <th class="text-center"># Pedido</th>
             <th class="text-center">Estado</th>
             <th class="text-center">Monto</th>
+            <th class="text-center">Oficina</th>
             <th class="text-center">Opciones</th>
             
           </tr>
@@ -407,6 +389,7 @@ foreach($registros1 as $montoprueba):
             <td class="text-center"><?php echo $factura_pendiente;?></td>
             <td class="text-center"><?php echo $montoprueba->estado?></td>
             <td class="text-center"><?php echo $prueba;?></td>
+            <td class="text-center"><?php echo $montoprueba->oficina?></td>
             
             <td class="bot text-center"><a href="eliminarordendecompra.php?Id=<?php echo $montoprueba->codigo_pedido?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
             <a type="button"  id="btnEditartemp"  style="margin: 5px;" class="btn btn-warning btnEditartemp" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
@@ -438,6 +421,7 @@ foreach($registros1 as $montoprueba):
             <th class="text-center"># Pedido</th>
             <th class="text-center">Estado</th>
             <th class="text-center">Monto</th>
+            <th class="text-center">Oficina</th>
             <th class="text-center">Opciones</th>
             
             </tr>
@@ -447,6 +431,7 @@ foreach($registros1 as $montoprueba):
           <th class="text-center"># Pedido</th>
             <th class="text-center">Estado</th>
             <th class="text-center">Monto</th>
+            <th class="text-center">Oficina</th>
             <th class="text-center">Opciones</th>
             
           </tr>
@@ -458,7 +443,7 @@ foreach($registros1 as $montoprueba):
     foreach($PreProcesada as $persona):
 
 $factura_pendiente= $persona->num_factura;
-$registros1=$base->query("SELECT * , SUM(costo*cantidad) AS monto FROM orden_pedido WHERE num_factura='$factura_pendiente'")->fetchAll(PDO::FETCH_OBJ);  
+$registros1=$base->query("SELECT * , SUM(costo*cantidad) AS monto FROM orden_pedido WHERE num_factura='$factura_pendiente' AND estado='Pendiente'")->fetchAll(PDO::FETCH_OBJ);  
 $monto1=0;
 foreach($registros1 as $montoprueba):
   $prueba= $montoprueba-> monto;
@@ -471,9 +456,10 @@ foreach($registros1 as $montoprueba):
             <td class="text-center"><?php echo $factura_pendiente;?></td>
             <td class="text-center"><?php echo $montoprueba->estado?></td>
             <td class="text-center"><?php echo $prueba?></td>
+            <td class="text-center"><?php echo $montoprueba->oficina?></td>
             
             <td class="bot text-center">
-            <a type="button"  id="btnEditarpedido"  style="margin: 5px;" class="btn btn-warning btnEditarpedido" data-target= "modalcomprar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
+            <a type="button"  id="btnEditarpedido"  title="Ver orden de compra" style="margin: 5px;" class="btn btn-warning btnEditarpedido" data-target= "modalcomprar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
           </tr>
           
         </tbody>
@@ -504,7 +490,7 @@ foreach($registros1 as $montoprueba):
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Desarrollador</h4>
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-copyright"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
+                            <li><i class="fab fa-twitter"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
                             
                        
                        
@@ -552,7 +538,7 @@ foreach($registros1 as $montoprueba):
         <div class="modal-body ">
           <label>Factura</label><input type="text" value='<?php echo  obtenerNuevoId();?>'  class="form-control" list="factura_pedido" id="factura_pedido1" disabled >
           <label>Proveedor</label>
-          <input type="text" class="form-control" list="proveedor" id="proveedorcod" onchange='busca_prov();' >
+          <input type="text" class="form-control" required list="proveedor" id="proveedorcod" autocomplete="off" onchange='busca_prov();' >
           <datalist id="proveedor">
           <select name="proveedor" id="proveedor" class="form-control">
 
@@ -570,7 +556,7 @@ foreach($registros1 as $montoprueba):
 
           
           <label >Código Producto</label>
-          <input type="text" class="form-control" list="producto_cod"  id="codproducto" onchange='busca_prod();'>
+          <input type="text" class="form-control guardado" required list="producto_cod"  autocomplete="off" id="codproducto" onchange='busca_prod();'>
          
           <datalist id="producto_cod">
           <select name="producto_cod" id="producto_cod" class="form-control">
@@ -583,13 +569,13 @@ foreach($registros1 as $montoprueba):
           </select>
           </datalist>
           
-          <label >Descripción</label><input type="text" class="form-control input-sm" id="descripcionactivo" disabled >
-          <label >Costo</label><input type="text" class="form-control input-sm" id="costo" >
-          <label >Cantidad</label><input type="text" class="form-control input-sm" id="cantidadpro" >
+          <label >Descripción</label><input type="text" required class="form-control input-sm guardado" id="descripcionactivo" disabled >
+          <label >Costo</label><input type="text" autocomplete="off" required class="form-control input-sm guardado" id="costo" >
+          <label >Cantidad</label><input type="text" autocomplete="off" required class="form-control input-sm guardado" id="cantidadpro" >
              
         </div>
         <div class="modal-footer">
-        <button class="btn btn-secondary" type="reset" >Agregar Otro Artículo</button>  
+        
           <button class="btn btn-secondary" onclick="cerrarmodal()" type="button">Cancelar</button>
           <input type="submit" class="btn btn-primary" href="#" value="Guardar"></input>
         </div>
@@ -611,12 +597,13 @@ foreach($registros1 as $montoprueba):
           </button>
         </div>
         <form id="mModificar">
-          <div class="modal-body pruebass">Detalle de Orden de compra.
+          <div class="modal-body pruebass">
           <div class="modal-body detalle_de_pedido" id='detalle_de_pedido'>
           </div>
         </div>
         
         <div class="modal-footer" id="footer-modificar">
+        <input class="btn btn-warning" type="button" href="#" onclick="" id="btn-producto1" value="+ Producto"></input>
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
           <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa' value="Procesar"></input>
         </div>
@@ -625,6 +612,86 @@ foreach($registros1 as $montoprueba):
       </div>
     </div>
   </div>
+
+
+
+<!-- Modal +Producto-->
+
+<div class="modal fade" id="modalagregarproductomas"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header bmodal-header-success">
+          <h5 class="modal-title-mas" id="exampleModalLabel">Agregar más Producto</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form id="mAgregarproducto">
+        <div class="modal-body ">
+          <label>Factura #</label><input type="text" value=''  disabled class="form-control" list="factura_pedido" id="factura_pedidomas1" disabled >
+          <label>Proveedor</label>
+          <input type="text" class="form-control" list="proveedor" id="proveedorcodmas" onchange='' disabled>
+          <datalist id="proveedor">
+          <select name="proveedor" id="proveedormas" class="form-control">
+
+          <?php 
+               foreach($exec as $fila):
+               echo "<option value='".$fila->id_proveedor."'>".$fila->id_proveedor."-".$fila->nombre_p."</option>";
+              endforeach;
+            ?>
+
+          </select>
+          </datalist>
+          <label >Nombre</label><input type="text" class="form-control input-sm " id="nombre_provmas" disabled>
+
+
+
+          
+          <label >Código Producto</label>
+          <input type="text" focus class="form-control guardado"  list="producto_codmas" autocomplete="off" id="codproductomas" onchange='busca_prodmas();'>
+         
+          <datalist id="producto_codmas">
+          <select name="producto_codmas" id="producto_codmas" class="form-control">
+
+          <?php 
+               foreach($exec1 as $fila1):
+               echo "<option value='".$fila1->Id."'>".$fila1->Id."-".$fila1->descripcion."</option>";
+              endforeach;
+              ?>
+          </select>
+          </datalist>
+          
+          <label >Descripción</label><input type="text" class="form-control input-sm guardado" id="descripcionactivomas" disabled >
+          <label >Costo</label><input type="text" class="form-control input-sm guardado" id="costomas" >
+          <label >Cantidad</label><input type="text" autocomplete="off" class="form-control input-sm guardado" id="cantidadpromas" >
+             
+        </div>
+        <div class="modal-footer">
+        
+          <button class="btn btn-secondary" type="button" data-dismiss="" onclick="refrescarmodal(); abremodal();">Cancelar</button>
+          <input type="submit" id="productomas" onclick="" class="btn btn-primary" href="#" value="Guardar"></input>
+          
+		
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Logout Modal-->
   <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -657,7 +724,7 @@ foreach($registros1 as $montoprueba):
         </div>
         <form id="mImprimir">
           
-            <input type="text" id="fact" name="fact" class="factura">
+            <input type="hidden" id="fact" name="fact" class="factura">
             <input type="hidden" id="codigo_pedido" name="codigo_pedido" class="codigo_pedido1">
             <input type="hidden" id="cantidad_pedido" name="cantidad_pedido" class="cantidad_pedido1">
             <input type="hidden" id="monto_pedido" name="monto_pedido" class="monto_pedido1">
@@ -687,14 +754,41 @@ foreach($registros1 as $montoprueba):
           </button>
         </div>
         <form id="mCompra">
-          <div class="modal-body compraprueba">Detalle de Orden de compra.
+          <div class="modal-body compraprueba">
           <div class="modal-body detalle_de_pedido" id='detalle_de_pedido'>
           </div>
         </div>
         
         <div class="modal-footer" id="footer-modificar">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa' value="Procesar"></input>
+          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesacompra' value="Procesar"></input>
+        </div>
+      </form>
+
+      </div>
+    </div>
+  </div>
+
+
+<!--Opciones de imprimir-->
+<div class="modal" id="ModalImprimircompra"  role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title-imprimir" id="exampleModalLabel"></h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <form id="mImprimircompra">
+          
+            <input type="hidden" id="factcompra" name="factcompra" class="factura">
+        <div class="modal-footer" id="footer-imprimir">
+        
+        
+
+          <button class="btn btn-secondary" type="button" id="cancel-no" data-dismiss="modal">No</button>
+          <input class="btn btn-warning" type="submit" href="#" onclick="" id='btn-procesa-si' value="Si"></input>
         </div>
       </form>
 
@@ -746,3 +840,46 @@ foreach($registros1 as $montoprueba):
 
 
 
+
+
+
+
+
+<script>
+  function cerrarmodal(){
+  $('#modalagregar').modal('hide');
+  $('#ModalImprimir').modal('hide');
+  $('#modalagregarproducto').modal('hide');
+(function(){
+  setInterval(function() {
+         document.location.reload()
+     }, 
+         200)
+ })()}
+
+ function refrescarmodal(){
+  idfact=$.trim($("#factura_pedidomas").val());
+  $('#modalagregarproducto').modal('hide');
+  $('#modalmodificar').modal('hide');
+  
+
+  (function(){
+  setInterval(function() {
+         document.location.reload()
+     }, 
+         200)
+ })()
+/* alert(idfact);*/
+}
+
+
+
+ 
+ </script>
+
+
+
+<?php
+
+}
+?>

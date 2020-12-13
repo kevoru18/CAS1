@@ -6,6 +6,16 @@ if(!isset($_SESSION["usuario"])){
   header("location:../login.html");
 
 }
+
+
+$usuario=  $_SESSION["usuario"];
+$oficina=  $_SESSION["oficina"];
+$permiso=  $_SESSION["permits"];
+if ($permiso==="Contador") {
+  header("location:suministros.php");
+
+}else{
+
 include('../Conection/conexion.php');
 
 require("../Conection/config.php");
@@ -27,6 +37,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="Sistema Control de Activos Comixmul">
   <meta name="author" content="Kevin Rubí">
+  <link rel="shortcut icon" href="../img/logo.png" />
 
   <title>CAS COMIXMUL - Suministros Siguatepeque</title>
 
@@ -81,20 +92,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="activosigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../taulabe/activotaulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="../otoro/activootoroadm.php">Otoro</a>
-            <a class="collapse-item" href="../nacaome/activonacaomeadm.php">Nacaome</a>
-            <a class="collapse-item" href="../monjaras/activomonjarasadm.php">Monjaras</a>
-            <a class="collapse-item" href="../coma/activocomaadm.php">Comayagua</a>
-            <a class="collapse-item" href="../cholu/activocholuadm.php">Choluteca</a>
-            <a class="collapse-item" href="../sb/activosbadm.php">Santa Barbara</a>
-            <a class="collapse-item" href="../sr/activosradm.php">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="../inti/activointiadm.php">Intibucá</a>
-            <a class="collapse-item" href="../progre/activoprogreadm.php">Progreso</a>
-            <a class="collapse-item" href="../marcala/activomarcalaadm.php">Marcala</a>
-            <a class="collapse-item" href="../lp/activolpadm.php">Gracias Lempira</a>
-            <a class="collapse-item" href="../semesur/activosemesuradm.php">SEMESUR</a>
+            <a class="collapse-item" href="activosigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -112,20 +110,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="suministrosigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../taulabe/suministrotaulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="../otoro/suministrootoroadm.php">Otoro</a>
-            <a class="collapse-item" href="../nacaome/suministronacaomeadm.php">Nacaome</a>
-            <a class="collapse-item" href="../monjaras/suministromonjarasadm.php">Monjaras</a>
-            <a class="collapse-item" href="../coma/suministrocomaadm.php">Comayagua</a>
-            <a class="collapse-item" href="../cholu/suministrocholuadm.php">Choluteca</a>
-            <a class="collapse-item" href="../sb/suministrosbadm.php">Santa Barbara</a>
-            <a class="collapse-item" href="../sr/suministrosradm.php">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="../inti/suministrointiadm.php">Intibucá</a>
-            <a class="collapse-item" href="../progre/suministroprogreadm.php">Progreso</a>
-            <a class="collapse-item" href="../marcala/suministromarcalaadm.php">Marcala</a>
-            <a class="collapse-item" href="../lp/suministrolpadm.php">Gracias Lempira</a>
-            <a class="collapse-item" href="../semesur/suministrosemesuradm.php">SEMESUR</a>
+            <a class="collapse-item" href="suministrosigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -141,20 +126,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="proveedoressigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../taulabe/proveedortaulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="../otoro/proveedorotoroadm.php">Otoro</a>
-            <a class="collapse-item" href="../nacaome/proveedornacaomeadm.php">Nacaome</a>
-            <a class="collapse-item" href="../monjaras/proveedormonjarasadm.php">Monjaras</a>
-            <a class="collapse-item" href="../coma/proveedorcomaadm.php">Comayagua</a>
-            <a class="collapse-item" href="../cholu/proveedorcholuadm.php">Choluteca</a>
-            <a class="collapse-item" href="../sb/proveedorsbadm.php">Santa Barbara</a>
-            <a class="collapse-item" href="../sr/proveedorsradm.php">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="../inti/proveedorintiadm.php">Intibucá</a>
-            <a class="collapse-item" href="../progre/proveedorprogreadm.php">Progreso</a>
-            <a class="collapse-item" href="../marcala/proveedormarcalaadm.php">Marcala</a>
-            <a class="collapse-item" href="../lp/proveedorlpadm.php">Gracias Lempira</a>
-            <a class="collapse-item" href="../semesur/proveedorsemesuradm.php">SEMESUR</a>
+            <a class="collapse-item" href="proveedoressigua.php">Oficina</a>
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -171,20 +143,8 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Oficinas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="../comprassigua/comprasigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="../comprastaula/comprataulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Monjaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="../comprassigua/comprasigua.php">Oficina</a>
+            
             <div class="collapse-divider"></div>
           </div>
         </div>
@@ -201,26 +161,32 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Entradas:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
-            <a class="collapse-item" href="entradas/entradasigua.php">Siguatepeque</a>
-            <a class="collapse-item" href="entradastaula/entradataulaadm.php">Taulabe</a>
-            <a class="collapse-item" href="#">Otoro</a>
-            <a class="collapse-item" href="#">Nacaome</a>
-            <a class="collapse-item" href="#">Monjaras</a>
-            <a class="collapse-item" href="#">Comayagua</a>
-            <a class="collapse-item" href="#">Choluteca</a>
-            <a class="collapse-item" href="#">Santa Barbara</a>
-            <a class="collapse-item" href="#">Santa Rosa de Copán</a>
-            <a class="collapse-item" href="#">Intibucá</a>
-            <a class="collapse-item" href="#">Progreso</a>
-            <a class="collapse-item" href="#">Marcala</a>
-            <a class="collapse-item" href="#">Gracias Lempira</a>
-            <a class="collapse-item" href="#">SEMESUR</a>
+            <a class="collapse-item" href="../entrada/entrada.php">Oficina</a>
+            
             <div class="collapse-divider"></div>
           </div>
           
         </div>
       </li>      
 
+   <!-- Nav Item - Pages Collapse Menu -->
+   <li class="nav-item">
+          <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagessalida" aria-expanded="true" aria-controls="collapsePages">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Salida</span>
+          </a>
+          <div id="collapsePagessalida" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+              <h6 class="collapse-header">Salida:</h6>
+              <!--<a class="collapse-item" href="login.html">Login</a>-->
+              <a class="collapse-item" href="../salida/salida.php">Oficina</a>
+              
+              <div class="collapse-divider"></div>
+            </div>
+            
+          </div>
+        </li>      
+  
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -241,21 +207,43 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
             <h6 class="collapse-header">Opciones Usuarios:</h6>
             <!--<a class="collapse-item" href="login.html">Login</a>-->
             <a class="collapse-item" href="../usuarios/users.php">Usuarios</a>
-            <a class="collapse-item" href="../forgot-password.php">Olvido de Password</a>
+            
             <div class="collapse-divider"></div>
           </div>
         </div>
       </li>
-      <!-- Nav Item - Tables -->
+      <!-- Nav Item - Tables --> <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link" href="../tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Reportes</span></a>
-      </li>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePagesreportes" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Reportes</span>
+        </a>
+        <div id="collapsePagesreportes" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Opciones de Reportes:</h6>
+            <!--<a class="collapse-item" href="login.html">Login</a>-->
+            
+            <a class="collapse-item" href="../reportes/existencias.php">Listado de existencias</a>
+            <a class="collapse-item" href="../reportes/activosdebaja.php">Activos dados de baja</a>
+            <a class="collapse-item" href="../reportes/entrada_compra.php">Entrada por Compras</a>
+            <a class="collapse-item" href="../reportes/entrada_traslado.php">Entrada por Traslado</a>
+            <a class="collapse-item" href="../reportes/salida_compra.php">Salida por Traslado</a>
+            <a class="collapse-item" href="../reportes/valorlibros.php">Listado de valores en libros</a>
+            <a class="collapse-item" href="../reportes/repor_depre.php">Reporte de Depreciación</a>
+            
 
+            <div class="collapse-divider"></div>
+          </div>
+        </div>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
-
+ <!-- Nav Item - Tables -->
+ <li class="nav-item">
+        <a class="nav-link" target="_blank" href="../manual/manual.pdf">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Ayuda</span></a>
+      </li>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -281,12 +269,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
           <!-- Topbar Search -->
           <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Busqueda..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-success" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
+              
             </div>
           </form>
 
@@ -304,7 +287,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION["nombre"]?></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Salir</span>
                 <!--! <img class="img-profile rounded-circle" src="C:\wamp\www\Activos Comixmul\img\prueba.jpg">-->
               </a>
               <!-- Dropdown - User Information -->
@@ -334,8 +317,8 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
 <div class="card shadow mb-4">
   <div class="card-header py-3">
     <h6 class="m-0 font-weight-bold text-primary">Tabla de Suministros</h6>
-    <button id="btnNuevo" type="button" href="#" class="btn btn-success btn-lg active btn btn-sm" data-toggle="modal" >Agregar Suministro <i class="fas fa-plus-circle"></i></button>
-    <button id="btnNuevo" type="button" href="#" class="btn btn-secondary btn-lg active btn btn-sm" data-toggle="modal" >Generar Depresiación <i class="fas fa-plus-circle"></i></button>
+    <button id="btnNuevosuministro" type="button" href="#" class="btn btn-success btn-lg active btn btn-sm" data-toggle="modal" >Agregar Suministro <i class="fas fa-plus-circle"></i></button>
+    
   </div>
   
    
@@ -343,20 +326,31 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
     <div class="table-responsive" id="tablausuarios">
       <table class="table table-bordered" id="tablausuarios" width="100%" cellspacing="0">
         <thead>
+        <form id="busquedaform">
+        <div class="row">
+          <div class="col">
+          
+          </div>
+          
+          <div class="col">
+           
+            <input type="text"  class="form-control guardado"autocomplete="off" style=""  list="busqueda" id="busquedasuministro"  placeholder="Ingrese el nombre del producto a buscar..." ><br>
+            
+          
+          </div>
+          
+        </div>
+      </form >    
+      
+
           <tr> 
             <th>Código</th>
             <th>Descripción</th>
+            <th>Cantidad</th>
             <th>Fecha Ingreso</th>
-            <th>Fecha Retiro</th>
-            <th>Valor en libros</th>
-            <th>Valor Actual</th>
-            <th>Depreciación mensual</th>
-            <th>Depreciación Acumulada</th>
-            <th>Costo de vida Útil</th>
-            <th>Cuenta de Débito</th>
-            <th>Cuenta de Credito</th>
-            <th>Valor Residual</th>
+            
             <th>Ubicación</th>
+            <th>Opciones</th>
             
           </tr>
         </thead>
@@ -365,50 +359,18 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
            
           <th>Código</th>
             <th>Descripción</th>
+            <th>Cantidad</th>
             <th>Fecha Ingreso</th>
-            <th>Fecha Retiro</th>
-            <th>Valor en libros</th>
-            <th>Valor Actual</th>
-            <th>Depreciación mensual</th>
-            <th>Depreciación Acumulada</th>
-            <th>Costo de vida Útil</th>
-            <th>Cuenta de Débito</th>
-            <th>Cuenta de Credito</th>
-            <th>Valor Residual</th>
-            <th>Ubicación</th>
             
+            <th>Ubicación</th>
+            <th>Opciones</th>
           </tr>
         </tfoot>
 
 
-  <?php
-    foreach($registros as $persona):
-      
-      
-
-    ?>
-        <tbody>
-          <tr>
-            <td><?php echo $persona->Id?></td>
-            <td><?php echo $persona->descripcion?></td>
-            <td><?php echo $persona->fecha_ingreso?></td>
-            <td><?php echo $persona->fecha_retiro?></td>
-            <td><?php echo $persona->valor_libro?></td>
-            <td><?php echo $persona->valor_actual?></td>
-            <td><?php echo $persona->depresiacion_mensual?></td>
-            <td><?php echo $persona->depresiacion_acumulada?></td>
-            <td><?php echo $persona->vida_util?></td>
-            <td><?php echo $persona->cuenta_debito?></td>            
-            <td><?php echo $persona->cuenta_credito?></td>            
-            <td><?php echo $persona->valor_residual?></td>            
-            <td><?php echo $persona->ubicacion?></td>            
-            
-            <td class="bot"><a href="inactivar_usuario.php?Id=<?php echo $persona->Id?>" style="margin: 5px;" class="btn btn-secondary btn-xs"><i class="fas fa-ban"></i></a>
-            <a type="button"  id="btnEditar"  style="margin: 5px;" class="btn btn-warning btnEditar" data-target= "modalmodificar" data-toggle="modal"> <i class="fas fa-pen"></i></td>
-          </tr>
+        <tbody id="suministros">
           
         </tbody>
-    <?php endforeach;?>
       </table>
     </div>
   </div>
@@ -434,7 +396,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
                     <div class="col-xs-12 col-sm-6">
                         <h4 class="all-tittles">Desarrollador</h4>
                         <ul class="list-unstyled">
-                            <li><i class="fa fa-copyright"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
+                            <li><i class="fab fa-twitter"></i>&nbsp; <a  href="https://twitter.com/kevo_ruxo" target=»_blank»> Kevin Rubí </a></i></li>
                             
                        
                        
@@ -469,7 +431,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
 
 
 <!-- Modal Usuarios-->
-<div class="modal fade" id="modalagregar"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalagregarsuministro"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header bmodal-header-success">
@@ -478,17 +440,17 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form id="mAgregar">
+        <form id="mAgregarSuministro">
         <div class="modal-body ">
-          <label>Nombre</label><input type="text" class="form-control input-sm" id="namea" >
-          <label >Teléfono</label><input type="text" class="form-control input-sm" id="phonea" >
-          <label >Cargo</label><input type="text" class="form-control input-sm" id="positiona" >
-          <label >Oficina</label><input type="text" class="form-control input-sm" id="officea" >
-          <label >Permiso de acceso</label><input type="text" class="form-control input-sm" id="permitsa" >
-          <label >Estado</label><input type="text" class="form-control input-sm" id="statusa" >
-          <label >Usuario</label><input type="text" class="form-control input-sm" id="usera">
-          <label >Clave</label><input type="text" class="form-control input-sm" id="passa" >
-          <label >Correo Electronico</label><input type="text" class="form-control input-sm" id="emaila">
+          <label>Descripción</label><input type="text" autocomplete="Off"class="form-control input-sm" id="namea" >
+          <label >Valor Actual</label><input type="text" autocomplete="Off"class="form-control input-sm" id="phonea" >
+          <label >Ubicación</label><input type="text" autocomplete="Off"class="form-control input-sm" id="positiona" >
+          <input type="hidden" class="form-control input-sm" id="officea" >
+          <input type="hidden" class="form-control input-sm" id="permitsa" >
+          <input type="hidden" class="form-control input-sm" id="statusa" >
+          <input type="hidden" class="form-control input-sm" id="usera">
+          <input type="hidden" class="form-control input-sm" id="passa" >
+          <input type="hidden" class="form-control input-sm" id="emaila">
              
         </div>
         <div class="modal-footer">
@@ -503,7 +465,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
 
 
 <!--Modal Modificar-->
-<div class="modal fade" id="modalmodificar"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalmodificarsuministro"  role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -512,19 +474,19 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
             <span aria-hidden="true">×</span>
           </button>
         </div>
-      <form id="mModificar">
+      <form id="mModificarSuministro">
         <div class="modal-body">Selecciona el campo a modificar Acontinuación si está listo para terminar presione guardar.
         <div class="modal-body">
         <input type="hidden" class="form-control input-sm" id="iduseru" name="iduseru" >
-          <label>Nombre</label><input type="text" class="form-control input-sm" id="nameu" name="nameu" >
-          <label >Teléfono</label><input type="text" class="form-control input-sm" id="phoneu" name="phoneu">
-          <label >Cargo</label><input type="text" class="form-control input-sm" id="positionu" >
-          <label >Oficina</label><input type="text" class="form-control input-sm" id="officeu" >
-          <label >Permiso de acceso</label><input type="text" class="form-control input-sm" id="permitsu" >
-          <label >Estado</label><input type="text" class="form-control input-sm" id="statusu" >
-          <label >Usuario</label><input type="text" class="form-control input-sm" id="useru">
-          <label >Clave</label><input type="text" class="form-control input-sm" id="passu" >
-          <label >Correo Electronico</label><input type="text" class="form-control input-sm" id="emailu">
+          <label>Descripción</label><input type="text" class="form-control input-sm" id="nameu" name="nameu" >
+          <label>Cantidad</label><input type="text" disabled class="form-control input-sm" id="phoneu" name="phoneu">
+          <label >Fecha Ingreso</label><input disabled type="text" class="form-control input-sm" id="positionu" >
+          <label >Ubicación</label><input type="text" class="form-control input-sm" id="officeu" >
+          <input type="hidden" class="form-control input-sm" id="permitsu" >
+          <input type="hidden" class="form-control input-sm" id="statusu" >
+          <input type="hidden" class="form-control input-sm" id="useru">
+          <input type="hidden" class="form-control input-sm" id="passu" >
+          <input type="hidden" class="form-control input-sm" id="emailu">
         </div>
         </div>
         <div class="modal-footer">
@@ -566,7 +528,8 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
 
   <!-- Custom scripts for all pages-->
   <script src="../js/sb-admin-2.min.js"></script>
-  <script src="funciones.js" type="text/javascript"> </script>
+  <script src="../js/cas/funciones.js" type="text/javascript"> </script>
+  <script src="../js/cas/busqueda.js" type="text/javascript"> </script>
 
   <!-- Page level plugins -->
   <script src="../vendor/chart.js/Chart.min.js"></script>
@@ -578,3 +541,7 @@ $registros=$base->query("select * from activossigua")->fetchAll(PDO::FETCH_OBJ);
 </body>
 
 </html>
+<?php
+
+}
+?>

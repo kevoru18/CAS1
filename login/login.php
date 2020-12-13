@@ -1,5 +1,7 @@
-<?php
+
+        <?php
 include ("../Conection/password.php");
+
 include ("../Conection/conec.php");
 
     try {
@@ -9,6 +11,7 @@ include ("../Conection/conec.php");
         $login=htmlentities(addslashes($_POST["user-name"]));
                
         $password=htmlentities(addslashes($_POST["User-Password"]));
+        $passcifrado = crypt($password);
         $contador=0;
         /* Definir Conexion */
         
@@ -16,32 +19,36 @@ include ("../Conection/conec.php");
 
         $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     
-        $sql="SELECT * FROM user WHERE User_Name = :login AND Password= :pass AND Status= 'Activo'";
+        $sql="SELECT * FROM user WHERE User_Name = :login ";
         
         $resultado= $base->prepare($sql);
         
-        $resultado-> bindValue(":login",$login);
-        $resultado-> bindValue(":pass",$password);
-        $resultado->execute();
+        $resultado->execute(array(":login"=>$login));
         $numero_registro=$resultado->rowcount();
         
-        if ($numero_registro!=0){
-            $sql1=mysqli_query($db,"SELECT * FROM user WHERE User_Name='$login'") or die(mysqli_error());
+            while($registro=$resultado->fetch(PDO::FETCH_ASSOC)){			
+            
+            if (password_verify($password, $registro['Password'])) {
+            
+                $sql1=mysqli_query($db,"SELECT * FROM user WHERE User_Name='$login'") or die(mysqli_error());
 
-            if($row = mysqli_fetch_array($sql1)) { 
-            session_start();
-            $_SESSION["usuario"]=$_POST["user-name"];
+                if($row = mysqli_fetch_array($sql1)) { 
+                    session_start();
+                    
+                    $_SESSION["usuario"]=$_POST["user-name"];
             
-            $_SESSION["nombre"]=$row["Name"];
+                    $_SESSION["nombre"]=$row["Name"];
             
-            $_SESSION["permits"]=$row["Acces_permits"];
-            $_SESSION["oficina"]=$row["Office"];
-            header("location:../index.php");
-            }
+                    $_SESSION["permits"]=$row["Acces_permits"];
+                    $_SESSION["oficina"]=$row["Office"];
+                    header("location:../index.php");
+                }   
 
-        }else{
+                    }else{
             
-            header("location:../login.html");
+                        header("location:../login.html");
+            
+        }
             
         }
         $resultado->closeCursor();
