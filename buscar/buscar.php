@@ -13,7 +13,9 @@ $tamano_pagina=5;
 $pagina=1;
 $usuario=$_SESSION["usuario"];
 $oficina=$_SESSION["oficina"];
-if ($oficina=="Siguatepeque") {
+$permiso=$_SESSION["permits"];
+
+if ($permiso=="Administrador") {
   # code...
 
 
@@ -66,6 +68,7 @@ if ($oficina=="Siguatepeque") {
         
         <td>". $fila['valor_libro']."</td>
         <td>". $fila['valor_actual']."</td>
+        
 
         <td>". $fila['depresiacion_mensual']."</td>
         <td>". $fila['depresiacion_acumulada']."</td>
@@ -146,7 +149,7 @@ if ($oficina=="Siguatepeque") {
        <td>". $fila['marca']."</td>
        <td>". $fila['modelo']."</td>
        <td>". $fila['serie']."</td>
-       <td>". $fila['estado']."</td>
+       <td>". $fila['Estado']."</td>
        
           <td class='bot'><a type='button'  id='btnEditar'  style='margin: 5px;' class='btn btn-warning btnEditar btn-circle' data-target= 'modalmodificar' data-toggle='modal'> <i class='fas fa-pen'></i></td>
         </tr>";
